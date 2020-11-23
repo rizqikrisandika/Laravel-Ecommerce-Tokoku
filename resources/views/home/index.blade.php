@@ -78,7 +78,7 @@
     <div class="content-layanan mt-5">
         <div class="row">
             <div class="col-12 col-md-4 col-lg-4">
-                <div class="card">
+                <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Bebas Ongkir</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -87,7 +87,7 @@
             </div>
 
             <div class="col-12 col-md-4 col-lg-4">
-                <div class="card">
+                <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Produk Original</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -96,7 +96,7 @@
             </div>
 
             <div class="col-12 col-md-4 col-lg-4">
-                <div class="card">
+                <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">24/7 Keluhan Layanan</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

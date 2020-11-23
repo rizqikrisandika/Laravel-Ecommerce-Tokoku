@@ -51,5 +51,6 @@ nav{
 
 footer{
     height: 300px;
+    max-height: 100%;
 }
 

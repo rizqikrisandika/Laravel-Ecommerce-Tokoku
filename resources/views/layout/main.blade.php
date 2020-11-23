@@ -28,8 +28,8 @@
             <div class="nav-right">
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link {{ request()->is('/login') ? 'active' : '' }}" href="#">Daftar</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="#">Masuk</a>
+                        <a class="nav-item nav-link {{ request()->is('/login') ? 'active' : '' }}" href="{{ route('daftar.index') }}">Daftar</a>
+                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="{{ route('masuk.index') }}">Masuk</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
     @yield('body')
 
 
-    <footer class="bg-white shadow-sm p-3 mt-5">
+    <footer class="bg-white p-3 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-3 col-lg-3 mt-5">
