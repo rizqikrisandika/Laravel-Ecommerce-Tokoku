@@ -17,3 +17,6 @@ Route::get('/','HomeController@index')->name('home.index');
 Route::get('/produk','ProductController@index')->name('produk.index');
 Route::get('/daftar','DaftarController@index')->name('daftar.index');
 Route::get('/masuk','MasukController@index')->name('masuk.index');
+Route::get('/dashboard', function () {
+    return view('admin.index');
+});

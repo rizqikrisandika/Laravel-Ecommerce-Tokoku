@@ -28,9 +28,6 @@
             <div class="nav-right">
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link {{ request()->is('/login') ? 'active' : '' }}" href="{{ route('daftar.index') }}">Daftar</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="{{ route('masuk.index') }}">Masuk</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="{{ route('masuk.index') }}">Keranjang</a>
                         <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="">Keluar</a>
                     </div>
                 </div>
@@ -38,47 +35,41 @@
         </div>
     </nav>
 
-    @yield('body')
-
-
-    <footer class="bg-white p-3 mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-3 col-lg-3 mt-5">
-                    <div class="footer-wrapper">
-                        <a class="navbar-brand" href="{{ route('home.index') }}"><h3 class="font-weight-bold">Tokoku.</h3></a>
-                        <p>©2020 Rizqi Krisandika</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                <div class="card" style="width: 12rem;">
+                    <div class="card-header">
+                        Navigasi
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a class="" href="">Dashboard</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="" href="">Pengguna</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="" href="">Produk</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="" href="">Kategori</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="" href="">Pemesanan</a>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="col-12 col-md-3 col-lg-3 mt-5">
-                    <div class="footer-wrapper">
-                        <h4>Menu</h4>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="#">Beranda</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="#">Produk</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="#">Tentang Kami</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="#">Contact</a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-3 col-lg-3 mt-5">
-                    <div class="footer-wrapper">
-                        <h4>Ikuti Kami</h4>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="#">Facebook</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="#">Twitter</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="#">Instagram</a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-3 col-lg-3 mt-5">
-                    <div class="footer-wrapper">
-                        <h4>Info Terbaru</h4>
-                    </div>
-                </div>
-
+            </div>
+            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
+                @yield('body')
             </div>
         </div>
-    </footer>
+    </div>
+
+
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -94,3 +85,7 @@
 </body>
 
 </html>
+
+
+
+
