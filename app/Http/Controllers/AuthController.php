@@ -7,7 +7,8 @@ use App\User;
 
 class AuthController extends Controller
 {
-    public function tampilDaftar()
+
+    public function tampilMasuk()
     {
         if(Auth::check())
         {
@@ -15,13 +16,11 @@ class AuthController extends Controller
             {
                 return redirect('/dashboard');
             }
-            else
-            {
+            else{
                 return redirect('/');
             }
         }
-        else
-        {
+        else{
             return view('login.masuk');
         }
     }
@@ -41,7 +40,7 @@ class AuthController extends Controller
             }
         }
 
-        return redirect('/masuk');
+        return view('login.masuk');
     }
 
     public function keluar()

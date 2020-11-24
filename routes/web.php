@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::group(['middleware' => ['auth','admin:Admin']], function () {
+    Route::get('/dashboard','DashboardController@index')->name('admin.index');
+});
 Route::get('/','HomeController@index')->name('home.index');
 Route::get('/produk','ProductController@index')->name('produk.index');
 Route::get('/daftar','DaftarController@index')->name('daftar.index');
-Route::get('/dashboard', function () {
-    return view('admin.index');
-});
+Route::post('/daftar','DaftarController@daftar')->name('daftar.akun');
 
-Route::get('/masuk','AuthController@tampilDaftar')->name('masuk.index');
+
+Route::get('/masuk','AuthController@tampilMasuk')->name('masuk.index');
 Route::post('/masuk','AuthController@masuk')->name('masuk.akun');
 Route::get('/keluar','AuthController@keluar')->name('keluar.akun');
