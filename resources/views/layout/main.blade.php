@@ -30,8 +30,9 @@
                     <div class="navbar-nav">
                         <a class="nav-item nav-link {{ request()->is('/login') ? 'active' : '' }}" href="{{ route('daftar.index') }}">Daftar</a>
                         <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="{{ route('masuk.index') }}">Masuk</a>
+                        <a class="nav-item nav-link {{ request()->is('/login') ? 'active' : '' }}" href="{{ route('daftar.index') }}">Profil</a>
                         <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="{{ route('masuk.index') }}">Keranjang</a>
-                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="">Keluar</a>
+                        <a class="nav-item nav-link {{ request()->is('/register') ? 'active' : '' }}" href="{{ route('keluar.akun') }}">Keluar</a>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@index')->name('home.index');
 Route::get('/produk','ProductController@index')->name('produk.index');
 Route::get('/daftar','DaftarController@index')->name('daftar.index');
-Route::get('/masuk','MasukController@index')->name('masuk.index');
 Route::get('/dashboard', function () {
     return view('admin.index');
 });
+
+Route::get('/masuk','AuthController@tampilDaftar')->name('masuk.index');
+Route::post('/masuk','AuthController@masuk')->name('masuk.akun');
+Route::get('/keluar','AuthController@keluar')->name('keluar.akun');
