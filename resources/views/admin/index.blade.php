@@ -1,8 +1,8 @@
-@extends('layout.main2')
+@extends('layouts.app2')
 
 @section('title','Dashboard Admin')
 
-@section('body')
+@section('content')
 
 <div class="row">
     <div class="col-4 col-sm-4 col-md-4 col-lg-4">
