@@ -41,11 +41,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Daftar') }}</a>
                                 </li>
                             @endif
                         @else
@@ -58,7 +58,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Keluar') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -81,13 +81,13 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <a class="" href="">Dashboard</a>
+                                <a class="" href="{{ route('dashboard.admin') }}">Dashboard</a>
                             </li>
                             <li class="list-group-item">
                                 <a class="" href="">Pengguna</a>
                             </li>
                             <li class="list-group-item">
-                                <a class="" href="">Produk</a>
+                                <a class="" href="{{ route('produk.admin') }}">Produk</a>
                             </li>
                             <li class="list-group-item">
                                 <a class="" href="">Kategori</a>

@@ -1,61 +1,47 @@
-@extends('layout.main2')
+@extends('layouts.app2')
 
-@section('title','Produk')
+@section('title','Produk Dashboard')
 
-@section('body')
+@section('content')
 
-<div class="row">
-    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-        <div class="card" style="height: 10rem;">
-            <div class="card-header">
-                User
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <h4>2</h4>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-        <div class="card" style="height: 10rem;">
-            <div class="card-header">
-                Pengguna
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <h4>2</h4>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-    <div class="col-4 col-sm-4 col-md-4 col-lg-4">
-        <div class="card" style="height: 10rem;">
-            <div class="card-header">
-                Total Pemesanan
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <h4>2</h4>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="wrapper-order mt-5">
-    <div class="card" style="height: 18rem;">
+    <div class="card h-100">
         <div class="card-header">
-            Pemesanan Terbaru
+            Produk
         </div>
         <div class="card-body">
-            <blockquote class="blockquote mb-0">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                        Title</cite></footer>
-            </blockquote>
+            <a name="" id="" class="btn btn-primary mb-3" href="{{ route('tampiltambah.admin') }}" role="button">Tambah Produk</a>
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
         </div>
     </div>
-</div>
 
 @endsection

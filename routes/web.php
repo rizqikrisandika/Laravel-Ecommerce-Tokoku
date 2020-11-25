@@ -18,17 +18,13 @@ Auth::routes();
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard.admin');
+    Route::get('/produk_admin','ProductController@index')->name('produk.admin');
+    Route::get('/produk_admin/tambah','ProductController@tambah')->name('tampiltambah.admin');
+    Route::post('/produk_admin/tambah','ProductController@tambah')->name('tambahproduk.admin');
 });
 
 Route::get('/','HomeController@index')->name('home.index');
 Route::get('/produk','ProductController@index')->name('produk.index');
-Route::get('/daftar','DaftarController@index')->name('daftar.index');
-Route::post('/daftar','DaftarController@daftar')->name('daftar.akun');
-
-
-Route::get('/masuk','AuthController@tampilMasuk')->name('masuk.index');
-Route::post('/masuk','AuthController@masuk')->name('masuk.akun');
-Route::get('/keluar','AuthController@keluar')->name('keluar.akun');
 
 
 

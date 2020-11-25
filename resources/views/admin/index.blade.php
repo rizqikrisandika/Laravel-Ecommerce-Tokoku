@@ -20,7 +20,7 @@
     <div class="col-4 col-sm-4 col-md-4 col-lg-4">
         <div class="card" style="height: 10rem;">
             <div class="card-header">
-                Pengguna
+                Pesanan
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
@@ -32,7 +32,7 @@
     <div class="col-4 col-sm-4 col-md-4 col-lg-4">
         <div class="card" style="height: 10rem;">
             <div class="card-header">
-                Total Pemesanan
+                Pendapatan
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
