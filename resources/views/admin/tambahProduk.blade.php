@@ -4,32 +4,47 @@
 
 @section('content')
 
-<h3>Tambah Produk</h3>
-
-<form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Nama</label>
-      <input type="text" name="nama" class="form-control" id="" aria-describedby="">
+<div class="card">
+    <div class="card-header">
+        Tambah Produk
     </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Harga</label>
-        <input type="number" name="harga" class="form-control" id="" aria-describedby="">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Kategori</label>
-        <select class="form-control" id="">
-          <option value="Handphone">Handphone</option>
-          <option value="Laptop">Laptop</option>
-          <option value="Komputer">Komputer</option>
-          <option value="Aksesoris">Aksesoris</option>
-          <option value="Lain-lain">Lain-lain</option>
-        </select>
-      </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Gambar</label>
-      <input type="file" name="gambar" class="form-control" id="" >
-    </div>
-    <button type="submit" class="btn btn-primary w-100 mt-3">Tambah</button>
-  </form>
+    <div class="card-body">
+        <form action="{{ route('tambahproduk.admin') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nama</label>
+              <input type="text" name="name" class="form-control" id="" aria-describedby="" placeholder="Nama produk">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Kategori</label>
+              <select class="form-control" name="category_id" id="">
+                <option selected>Pilih Produk</option>
+                  @foreach ($kategori as $kategori)
+                  <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
+                  @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Harga</label>
+                <input type="number" name="price" class="form-control" id="" aria-describedby="" placeholder="Rp.">
+              </div>
 
+              <div class="form-group">
+                <label for="exampleInputEmail1">Jumlah</label>
+                <input type="number" name="quantity" class="form-control" id="" aria-describedby="" placeholder="Jumlah Produk">
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Deskripsi</label>
+                <textarea type="" name="desc" class="form-control" id="summernote" aria-describedby=""></textarea>
+              </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Gambar</label>
+              <input type="file" name="image" class="form-control" id="" >
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-3">Tambah</button>
+          </form>
+
+    </div>
+</div>
 @endsection
