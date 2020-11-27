@@ -97,10 +97,5 @@ class ProductController extends Controller
 
         return redirect()->route('produk.admin');
 
-
-
-
-
-
     }
 }

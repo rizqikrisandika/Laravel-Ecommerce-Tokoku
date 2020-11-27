@@ -27,7 +27,7 @@
             @foreach ($produk as $produk)
             <div class="col-6 col-lg-3 col-md-6 col-sm-6 mt-5">
                 <div class="card shadow" style="width: 15rem; border:none;">
-                    <img src=".." class="card-img-top" alt="...">
+                    <img src="{{ url('/storage/'.$produk->image) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $produk->name }}</h5>
                         <p class="card-text">Rp. {{number_format($produk->price,0)}}</p>

@@ -21,15 +21,24 @@
         <table class="table mt-3">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">No</th>
                     <th scope="col">Nama</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($kategori as $kategori)
                 <tr>
-                    <th scope="row">{{ $kategori->id }}</th>
+                    <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $kategori->name }}</td>
+                    <td>
+                        <a name="" id="" class="btn btn-warning" href="{{ route('tampilubahkategori.admin',['id'=>$kategori->id]) }}" role="button">Ubah</a>
+                        <form class="d-inline" action="{{ route('hapuskategori.admin',['id'=>$kategori->id]) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button  type="submit" class="btn btn-danger" role="button">Hapus</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

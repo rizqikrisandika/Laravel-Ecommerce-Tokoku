@@ -33,8 +33,30 @@ class CategoryController extends Controller
 
     public function editForm($id)
     {
-        $product = Product::findOrfail($id);
+        $kategori = Category::findOrfail($id);
 
-        return view('');
+        return view('admin.editCategory',compact('kategori'));
+    }
+
+    public function updateCategory(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string'
+        ]);
+
+        $kategori = Category::findOrfail($id);
+
+        $kategori->name = $request->name;
+
+        $kategori->save();
+
+        return redirect()->route('tampilkategori.admin');
+    }
+
+    public function hapusCategory($id)
+    {
+        Category::where('id',$id)->delete();
+
+        return redirect()->route('tampilkategori.admin');
     }
 }

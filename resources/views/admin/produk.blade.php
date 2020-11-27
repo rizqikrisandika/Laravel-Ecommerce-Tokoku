@@ -15,7 +15,7 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">No</th>
                     <th scope="col">Dibuat</th>
                     <th scope="col">Nama Produk</th>
                     <th scope="col">Kategori</th>
@@ -26,12 +26,16 @@
             <tbody>
                 @foreach ($produk as $produk)
                 <tr>
-                    <th scope="row">{{ $produk->id }}</th>
+                    <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $produk->user['email'] }}</td>
                     <td>{{ $produk->name }}</td>
                     <td>{{ $produk->category['name'] }}</td>
                     <td>Rp. {{ $produk->price }}</td>
-                    <td></td>
+                    <td>
+                        <a name="" id="" class="btn btn-primary" href="#" role="button">Detail</a>
+                        <a name="" id="" class="btn btn-warning" href="#" role="button">Ubah</a>
+                        <a name="" id="" class="btn btn-danger" href="#" role="button">Hapus</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
