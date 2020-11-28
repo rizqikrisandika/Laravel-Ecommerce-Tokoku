@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <h4>2</h4>
+                    <h4>{{ $usercount }}</h4>
                 </blockquote>
             </div>
         </div>
@@ -20,11 +20,11 @@
     <div class="col-4 col-sm-4 col-md-4 col-lg-4">
         <div class="card" style="height: 10rem;">
             <div class="card-header">
-                Pesanan
+                Produk
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <h4>2</h4>
+                    <h4>{{ $produkcount }}</h4>
                 </blockquote>
             </div>
         </div>
@@ -49,11 +49,31 @@
             Pemesanan Terbaru
         </div>
         <div class="card-body">
-            <blockquote class="blockquote mb-0">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                        Title</cite></footer>
-            </blockquote>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Produk</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Jumlah</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{-- @foreach ($pengguna as $pengguna) --}}
+                    <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    {{-- @endforeach --}}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

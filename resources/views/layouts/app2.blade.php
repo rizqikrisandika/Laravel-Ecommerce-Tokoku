@@ -88,7 +88,7 @@
                                 <a class="" href="{{ route('dashboard.admin') }}">Dashboard</a>
                             </li>
                             <li class="list-group-item">
-                                <a class="" href="">Pengguna</a>
+                                <a class="" href="{{ route('user.admin') }}">Pengguna</a>
                             </li>
                             <li class="list-group-item">
                                 <a class="" href="{{ route('produk.admin') }}">Produk</a>
@@ -97,7 +97,7 @@
                                 <a class="" href="{{ route('tampilkategori.admin') }}">Kategori</a>
                             </li>
                             <li class="list-group-item">
-                                <a class="" href="">Pemesanan</a>
+                                <a class="" href="{{ route('pemesanan.admin') }}">Pemesanan</a>
                             </li>
                         </ul>
                     </div>

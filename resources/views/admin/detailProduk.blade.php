@@ -1,21 +1,20 @@
 @extends('layouts.app2')
 
-@section('title','Produk Dashboard')
+@section('title','Detail Produk')
 
 @section('content')
 
 <div class="card h-100">
     <div class="card-header">
-        Produk
+        Detail Produk
     </div>
     <div class="card-body">
-        <a name="" id="" class="btn btn-primary mb-3" href="{{ route('tampiltambah.admin') }}" role="button">Tambah
-            Produk</a>
 
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">No</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Dibuat</th>
                     <th scope="col">Nama Produk</th>
                     <th scope="col">Kategori</th>
                     <th scope="col">Harga</th>
@@ -23,14 +22,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($produk as $produk)
                 <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
+                    <th scope="row">{{ $produk->id }}</th>
+                    <td>{{ $produk->user['email'] }}</td>
                     <td>{{ $produk->name }}</td>
                     <td>{{ $produk->category['name'] }}</td>
                     <td>Rp. {{ $produk->price }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-primary" href="{{ route('detailproduk.admin',['id'=>$produk->id]) }}" role="button">Detail</a>
                         <a name="" id="" class="btn btn-warning" href="{{ route('tampilubahproduk.admin',['id'=>$produk->id]) }}" role="button">Ubah</a>
                         <form class="d-inline" action="{{ route('hapusproduk.admin',['id'=>$produk->id]) }}" method="post">
                             @csrf
@@ -39,7 +37,6 @@
                         </form>
                     </td>
                 </tr>
-                @endforeach
             </tbody>
         </table>
     </div>

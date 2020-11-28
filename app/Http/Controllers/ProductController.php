@@ -24,12 +24,19 @@ class ProductController extends Controller
         return view('admin.produk',compact('produk'));
     }
 
-    public function tambah()
+    public function tambahForm()
     {
 
         $kategori = Category::all();
 
         return view('admin.tambahProduk',compact('kategori'));
+    }
+
+    public function detailProduk($id)
+    {
+        $produk = Product::findOrFail($id);
+
+        return view('admin.detailProduk',compact('produk'));
     }
 
     public function tambahProduk(Request $request)
