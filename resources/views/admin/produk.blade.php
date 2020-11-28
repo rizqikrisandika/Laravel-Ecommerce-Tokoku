@@ -33,8 +33,12 @@
                     <td>Rp. {{ $produk->price }}</td>
                     <td>
                         <a name="" id="" class="btn btn-primary" href="#" role="button">Detail</a>
-                        <a name="" id="" class="btn btn-warning" href="#" role="button">Ubah</a>
-                        <a name="" id="" class="btn btn-danger" href="#" role="button">Hapus</a>
+                        <a name="" id="" class="btn btn-warning" href="{{ route('tampilubahproduk.admin',['id'=>$produk->id]) }}" role="button">Ubah</a>
+                        <form class="d-inline" action="{{ route('hapusproduk.admin',['id'=>$produk->id]) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" id="" class="btn btn-danger"  role="button">Hapus</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

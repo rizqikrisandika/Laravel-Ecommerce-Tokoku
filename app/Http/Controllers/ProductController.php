@@ -35,39 +35,6 @@ class ProductController extends Controller
     public function tambahProduk(Request $request)
     {
 
-        // if($request->hasFile('image'))
-        // {
-        //     if($request->file('image')->isValid())
-        //     {
-        //         $request->validate([
-        //             'name'=>'required|string',
-        //             'price'=>'required|numeric',
-        //             'category_id'=>'required|numeric',
-        //             'image'=>'required|image|mimes:jpeg,png,jpg|max:2048',
-        //             'quantity'=>'required|numeric',
-        //             'desc'=>'required'
-        //         ]);
-
-        //         $uploader = Auth::user()->id;
-        //         $extension = $request->image->extension();
-        //         $imageName = 'img_'.date('dmyHis').'.'.$extension;
-        //         $request->image->storeAs('public/images',$imageName);
-        //         $imagePath =  Storage::url('public/images', $imageName);
-
-        //         Product::create([
-        //             'name' => $request->name,
-        //             'price' => $request->price,
-        //             'category_id' => $request->category_id,
-        //             'image' => $imagePath,
-        //             'quantity' => $request->quantity,
-        //             'desc' => $request->desc,
-        //             'user_id' => $uploader
-        //         ]);
-
-        //         return redirect()->route('produk.admin');
-        //     }
-        // }
-
         $request->validate([
             'name'=>'required|string',
             'price'=>'required',
@@ -97,5 +64,67 @@ class ProductController extends Controller
 
         return redirect()->route('produk.admin');
 
+    }
+
+    public function editForm($id)
+    {
+        $produk = Product::findOrfail($id);
+        $kategori = Category::all();
+
+        return view('admin.editProduk',compact('produk','kategori'));
+    }
+
+    public function updateProduk(Request $request,$id)
+    {
+
+        $request->validate([
+            'name'=>'required|string',
+            'price'=>'required',
+            'category_id'=>'required',
+            'image'=>'',
+            'quantity'=>'required',
+            'desc'=>'required'
+        ]);
+
+        $produk = Product::findOrFail($id);
+
+        if($request->image)
+        {
+
+            $imageExtension = $request->image->extension();
+            $imageName = 'img_'.time().'.'.$imageExtension;
+            $imagePath = $request->image->storeAs('images',$imageName,'public');
+
+            $produk->name = $request->name;
+            $produk->price = $request->price;
+            $produk->category_id = $request->category_id;
+            $produk->image = $imagePath;
+            $produk->quantity = $request->quantity;
+            $produk->desc = $request->desc;
+
+            $produk->save();
+
+        }else{
+
+            $produk->name = $request->name;
+            $produk->price = $request->price;
+            $produk->category_id = $request->category_id;
+            $produk->quantity = $request->quantity;
+            $produk->desc = $request->desc;
+
+            $produk->save();
+        }
+
+        return redirect()->route('produk.admin');
+    }
+
+    public function hapusProduk($id)
+    {
+        $produk = Product::where('id',$id)->first();
+        Storage::disk('public')->delete($produk->image);
+
+        Product::where('id',$id)->delete();
+
+        return redirect()->route('produk.admin');
     }
 }

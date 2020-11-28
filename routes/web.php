@@ -18,9 +18,14 @@ Auth::routes();
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard.admin');
+
     Route::get('/produk_admin','ProductController@index')->name('produk.admin');
     Route::get('/produk_admin/tambah','ProductController@tambah')->name('tampiltambah.admin');
     Route::post('/produk_admin/tambah','ProductController@tambahProduk')->name('tambahproduk.admin');
+    Route::get('/produk_admin/ubah/{id}','ProductController@editForm')->name('tampilubahproduk.admin');
+    Route::post('/produk_admin/ubah/{id}','ProductController@updateProduk')->name('updateproduk.admin');
+    Route::delete('/produk_admin/hapus/{id}','ProductController@hapusProduk')->name('hapusproduk.admin');
+
     Route::get('/kategori_admin','CategoryController@index')->name('tampilkategori.admin');
     Route::post('/kategori_admin/tambah','CategoryController@tambahCategory')->name('tambahkategori.admin');
     Route::get('/kategori_admin/ubah/{id}','CategoryController@editForm')->name('tampilubahkategori.admin');
