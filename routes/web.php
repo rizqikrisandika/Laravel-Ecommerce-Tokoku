@@ -39,7 +39,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::get('/','HomeController@index')->name('home.index');
-Route::get('/produk','ProductController@index')->name('produk.index');
+Route::get('/produk','HomeController@produk')->name('produk.index');
+Route::get('/produk/detail/{id}','HomeController@show')->name('detailproduk.index');
 
 
 

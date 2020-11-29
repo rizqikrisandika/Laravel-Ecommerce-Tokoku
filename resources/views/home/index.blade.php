@@ -26,14 +26,18 @@
         <div class="row">
             @foreach ($produk as $produk)
             <div class="col-6 col-lg-3 col-md-6 col-sm-6 mt-5">
-                <div class="card shadow" style="width: 15rem;padding-top:2rem; border:none;">
-                    <img src="{{ url('/storage/'.$produk->image) }}" class="card-img-top img-responsive" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $produk->name }}</h5>
-                        <p class="card-text">Rp. {{number_format($produk->price,0)}}</p>
-                        <a href="#" class="btn btn-primary">Detail</a>
+                    <div class="card shadow-sm" style="width: 15rem;padding-top:2rem; border:none;">
+                        <a href="{{ route('detailproduk.index',['id'=>$produk->id]) }}">
+                            <img src="{{ url('/storage/'.$produk->image) }}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <a href="{{ route('detailproduk.index',['id'=>$produk->id]) }}">
+                                <h5 class="card-title">{{ $produk->name }}</h5>
+                            </a>
+                            <p class="card-text">Rp. {{number_format($produk->price,0)}}</p>
+                            <p class="card-text">{{$produk->category['name']}}</p>
+                        </div>
                     </div>
-                </div>
             </div>
             @endforeach
 

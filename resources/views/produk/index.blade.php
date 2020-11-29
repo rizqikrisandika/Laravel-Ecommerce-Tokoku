@@ -1,7 +1,7 @@
-@extends('layout.main')
+@extends('layouts.app')
 @section('title','Produk')
 
-@section('body')
+@section('content')
 
 <div class="container">
     <div class="wrapper-produk">
@@ -11,12 +11,14 @@
                 <div class="wrapper-kategori mt-5">
                     <div class="card" style="width: 12rem;">
                         <div class="card-header">
-                          Featured
+                          Kategori
                         </div>
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Cras justo odio</li>
-                          <li class="list-group-item">Dapibus ac facilisis in</li>
-                          <li class="list-group-item">Vestibulum at eros</li>
+                            @foreach ($kategori as $kategori)
+                            <li class="list-group-item">
+                                <a href="">{{ $kategori->name }}</a>
+                            </li>
+                            @endforeach
                         </ul>
                       </div>
                 </div>
@@ -24,77 +26,22 @@
             <div class="col-12 col-md-9 col-lg-9">
                 <h3>Produk</h3>
                 <div class="row">
+                    @foreach ($produk as $produk)
                     <div class="col-12 col-lg-4 col-md-4 col-sm-6 mt-5">
-                        <div class="card shadow-sm" style="width: 15rem; border:none;">
-                            <img src="..." class="card-img-top" alt="...">
+                        <div class="card shadow-sm" style="width: 15rem;padding-top:2rem; border:none;">
+                            <a href="{{ route('detailproduk.index',['id'=>$produk->id]) }}">
+                                <img src="{{ url('/storage/'.$produk->image) }}" class="card-img-top" alt="...">
+                            </a>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="{{ route('detailproduk.index',['id'=>$produk->id]) }}">
+                                    <h5 class="card-title">{{ $produk->name }}</h5>
+                                </a>
+                                <p class="card-text">Rp. {{number_format($produk->price,0)}}</p>
+                                <p class="card-text">{{$produk->category['name']}}</p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-12 col-lg-4 col-md-4 col-sm-6 mt-5">
-                        <div class="card shadow-sm" style="width: 15rem; border:none;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-lg-4 col-md-4 col-sm-6 mt-5">
-                        <div class="card shadow-sm" style="width: 15rem; border:none;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-lg-4 col-md-4 col-sm-6 mt-5">
-                        <div class="card shadow-sm" style="width: 15rem; border:none;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-lg-4 col-md-4 col-sm-6 mt-5">
-                        <div class="card shadow-sm" style="width: 15rem; border:none;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-lg-4 col-md-4 col-sm-6 mt-5">
-                        <div class="card shadow-sm" style="width: 15rem; border:none;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -2,14 +2,6 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-nav{
-    height: 80px;
-}
-
-.nav-right{
-    float: right;
-}
-
 .wrapper-top{
     text-align: center;
     padding: 40px 0;
@@ -54,4 +46,9 @@ footer{
     max-height: 100%;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 16vw;
+    object-fit: cover;
+}
 

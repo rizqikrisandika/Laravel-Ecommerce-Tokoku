@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -14,5 +15,20 @@ class HomeController extends Controller
         $produk = Product::orderBy('created_at','desc')->take(4)->get();
 
         return view('home.index',compact('produk'));
+    }
+
+    public function produk()
+    {
+        $produk =  Product::orderBy('created_at','desc')->get();
+        $kategori = Category::all();
+
+        return view('produk.index',compact('produk','kategori'));
+    }
+
+    public function show($id)
+    {
+        $produk = Product::findOrFail($id);
+
+        return view('produk.detail', compact('produk'));
     }
 }
