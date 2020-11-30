@@ -8,6 +8,8 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Product;
 use App\Role;
+use App\Profile;
+use App\Order;
 
 class User extends Authenticatable
 {
@@ -43,5 +45,15 @@ class User extends Authenticatable
     public function product()
     {
         return $this->hasOne(Product::class);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function order()
+    {
+        return $this->haMany(Order::class);
     }
 }
