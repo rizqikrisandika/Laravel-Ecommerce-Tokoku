@@ -41,7 +41,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 Route::get('/','HomeController@index')->name('home.index');
 Route::get('/produk','HomeController@produk')->name('produk.index');
 Route::get('/produk/detail/{id}','HomeController@show')->name('detailproduk.index');
-Route::get('/Keranjang','CartController@show')->name('keranjang.index');
+Route::post('/Keranjang/{id}','OrderController@order')->name('keranjang.index');
 
 
 
