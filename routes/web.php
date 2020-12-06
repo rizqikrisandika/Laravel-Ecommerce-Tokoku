@@ -41,7 +41,9 @@ Route::group(['middleware' => ['role:admin']], function () {
 Route::get('/','HomeController@index')->name('home.index');
 Route::get('/produk','HomeController@produk')->name('produk.index');
 Route::get('/produk/detail/{id}','HomeController@show')->name('detailproduk.index');
-Route::post('/Keranjang/{id}','OrderController@order')->name('keranjang.index');
+Route::get('/keranjang','OrderController@keranjang')->name('keranjang.index');
+Route::post('/keranjang/{id}','OrderController@order')->name('tambahkeranjang.index');
+Route::delete('/keranjang/{id}','OrderController@hapusKeranjang')->name('hapuskeranjang.index');
 
 
 

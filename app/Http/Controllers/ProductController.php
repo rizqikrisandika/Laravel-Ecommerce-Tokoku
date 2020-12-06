@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use UxWeb\SweetAlert\SweetAlert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -69,6 +70,9 @@ class ProductController extends Controller
 
         $produk->save();
 
+
+        alert()->success('Tambah Produk', 'Sukses');
+
         return redirect()->route('produk.admin');
 
     }
@@ -122,6 +126,8 @@ class ProductController extends Controller
             $produk->save();
         }
 
+        alert()->success('Ubah Produk', 'Sukses');
+
         return redirect()->route('produk.admin');
     }
 
@@ -131,6 +137,8 @@ class ProductController extends Controller
         Storage::disk('public')->delete($produk->image);
 
         Product::where('id',$id)->delete();
+
+        alert()->error('Hapus Produk', 'Sukses');
 
         return redirect()->route('produk.admin');
     }

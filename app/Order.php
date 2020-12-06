@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Order_Detail;
 
 class Order extends Model
 {
@@ -12,5 +13,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-
+    public function order_detail()
+    {
+        return $this->belongsTo(Order_Detail::class);
+    }
 }

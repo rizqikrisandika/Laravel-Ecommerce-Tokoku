@@ -32,7 +32,7 @@
                     Pesan Sekarang
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('keranjang.index',['id'=>$produk->id]) }}" method="post">
+                    <form action="{{ route('tambahkeranjang.index',['id'=>$produk->id]) }}" method="post">
                         @csrf
                         <input type="text" class="form-control" name="total" value="1">
                         <button type="submit" class="btn btn-primary w-100 mt-2">Tambah Keranjang</button>

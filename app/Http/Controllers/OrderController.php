@@ -25,6 +25,8 @@ class OrderController extends Controller
 
         if($request->total > $produk->quantity)
         {
+            alert()->error('Pemesanan Melebihi Stok Produk', 'Gagal');
+
             return redirect()->route('detailproduk.index',$id);
         }
 
@@ -67,7 +69,32 @@ class OrderController extends Controller
         $order->total_price = $order->total_price + $produk->price * $request->total;
         $order->update();
 
+        alert()->success('Tambah Produk Ke Keranjang', 'Sukses');
+
         return redirect()->route('produk.index');
+    }
+
+    public function keranjang()
+    {
+        $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $order_detail = Order_Detail::where('order_id',$order->id)->get();
+
+        return view('cart.index',compact('order','order_detail'));
+    }
+
+    public function hapusKeranjang($id)
+    {
+        $order_detail = Order_Detail::where('id',$id)->first();
+        $order = Order::where('id',$order_detail->order_id)->first();
+
+        $order->total_price =  $order->total_price - $order_detail->total_price;
+        $order->update();
+
+        $order_detail->delete();
+
+        alert()->error('Keranjang Produk Dihapus', 'Sukses');
+
+        return redirect()->route('keranjang.index');
     }
 
 }

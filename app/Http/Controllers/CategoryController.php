@@ -28,6 +28,8 @@ class CategoryController extends Controller
 
         Category::create($request->all());
 
+        alert()->success('Tambah Kategori', 'Sukses');
+
         return redirect()->route('tampilkategori.admin');
     }
 
@@ -50,12 +52,16 @@ class CategoryController extends Controller
 
         $kategori->save();
 
+        alert()->success('Ubah Kategori', 'Sukses');
+
         return redirect()->route('tampilkategori.admin');
     }
 
     public function hapusCategory($id)
     {
         Category::where('id',$id)->delete();
+
+        alert()->error('Hapus Kategori', 'Sukses');
 
         return redirect()->route('tampilkategori.admin');
     }

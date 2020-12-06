@@ -41,6 +41,26 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
+                        @php
+                            if (Auth::user()) {
+                                $order = App\Order::where('user_id',Auth::user()->id)->where('status',0)->first();
+                            }
+
+                            if(!empty($order))
+                            {
+                                $notif = App\Order_Detail::where('order_id',$order->id)->count();
+                            }
+                        @endphp
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('keranjang.index') }}">
+                                <i class="fa fa-shopping-cart"></i>
+                                @if (!empty($notif))
+                                    <span class="badge badge-danger">{{ $notif }}</span>
+                                @endif
+                            </a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
@@ -117,5 +137,9 @@
             </div>
         </footer>
     </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @include('sweet::alert')
+
 </body>
 </html>
