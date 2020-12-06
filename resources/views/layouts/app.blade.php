@@ -44,7 +44,7 @@
 
                         @php
                             if (Auth::user()) {
-                                $order = App\Order::where('user_id',Auth::user()->id)->where('status',0)->first();
+                                $order = App\Order::where('user_id',Auth::user()->id)->where('status','=','keranjang')->first();
                             }
 
                             if(!empty($order))

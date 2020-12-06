@@ -30,19 +30,19 @@ class OrderController extends Controller
             return redirect()->route('detailproduk.index',$id);
         }
 
-        $cek_order = Order::where('user_id',Auth::user()->id)->where('status',0)->first();
+        $cek_order = Order::where('user_id',Auth::user()->id)->where('status','=','keranjang')->first();
 
         if(empty($cek_order))
         {
             $order = new Order;
             $order->user_id = Auth::user()->id;
             $order->order_date = $tanggal;
-            $order->status = 0;
+            $order->status = 'keranjang';
             $order->total_price = 0;
             $order->save();
         }
 
-        $new_order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $new_order = Order::where('user_id', Auth::user()->id)->where('status','=','keranjang')->first();
 
         $cek_order_detail = Order_Detail::where('product_id',$produk->id)->where('order_id',$new_order->id)->first();
 
@@ -64,7 +64,7 @@ class OrderController extends Controller
             $order_detail->update();
         }
 
-        $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $order = Order::where('user_id', Auth::user()->id)->where('status','=','keranjang')->first();
 
         $order->total_price = $order->total_price + $produk->price * $request->total;
         $order->update();
@@ -76,7 +76,7 @@ class OrderController extends Controller
 
     public function keranjang()
     {
-        $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $order = Order::where('user_id', Auth::user()->id)->where('status','=','keranjang')->first();
         $order_detail = Order_Detail::where('order_id',$order->id)->get();
 
         return view('cart.index',compact('order','order_detail'));
@@ -96,5 +96,23 @@ class OrderController extends Controller
 
         return redirect()->route('keranjang.index');
     }
+
+    public function checkout()
+    {
+        $order = Order::where('user_id', Auth::user()->id)->where('status','=','keranjang')->first();
+        $order->status = 'checkout';
+        $order->update();
+
+        // $cek_order = Order::where('user_id', Auth::user()->id)->where('status','=','checkout')->first();
+        // $order_detail = Order_Detail::where('order_id',$cek_order->id)->get();
+
+
+        alert()->success('Checkout Produk', 'Sukses');
+
+        return redirect()->route('home.index');
+
+        // return view('checkout.index',compact('cek_order','order_detail'));
+    }
+
 
 }

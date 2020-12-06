@@ -44,6 +44,7 @@ Route::get('/produk/detail/{id}','HomeController@show')->name('detailproduk.inde
 Route::get('/keranjang','OrderController@keranjang')->name('keranjang.index');
 Route::post('/keranjang/{id}','OrderController@order')->name('tambahkeranjang.index');
 Route::delete('/keranjang/{id}','OrderController@hapusKeranjang')->name('hapuskeranjang.index');
+Route::get('/checkout','OrderController@checkout')->name('checkout.index');
 
 
 

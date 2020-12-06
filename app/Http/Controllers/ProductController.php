@@ -8,6 +8,7 @@ use App\Category;
 use UxWeb\SweetAlert\SweetAlert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
 class ProductController extends Controller
 {
@@ -52,6 +53,8 @@ class ProductController extends Controller
             'desc'=>'required'
         ]);
 
+        $tanggal = Carbon::now();
+
 
         $imageExtension = $request->image->extension();
         $imageName = 'img_'.time().'.'.$imageExtension;
@@ -67,6 +70,7 @@ class ProductController extends Controller
         $produk->quantity = $request->quantity;
         $produk->desc = $request->desc;
         $produk->user_id = $user_id;
+        $produk->created_at = $tanggal;
 
         $produk->save();
 
@@ -97,6 +101,7 @@ class ProductController extends Controller
             'desc'=>'required'
         ]);
 
+        $tanggal = Carbon::now();
         $produk = Product::findOrFail($id);
 
         if($request->image)
@@ -112,6 +117,7 @@ class ProductController extends Controller
             $produk->image = $imagePath;
             $produk->quantity = $request->quantity;
             $produk->desc = $request->desc;
+            $produk->updated_at = $tanggal;
 
             $produk->save();
 
@@ -122,6 +128,7 @@ class ProductController extends Controller
             $produk->category_id = $request->category_id;
             $produk->quantity = $request->quantity;
             $produk->desc = $request->desc;
+            $produk->updated_at = $tanggal;
 
             $produk->save();
         }

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Keranjang')
+@section('title','Checkout')
 
 @section('content')
 
@@ -8,10 +8,10 @@
         <div class="col-12 col-sm-12 col-md-9 col-lg-9">
             <div class="card">
                 <div class="card-header">
-                    Keranjang
+                    Checkout
                 </div>
+
                 <div class="card-body">
-                    @if(empty($order_detail))
                     <table class="table table-hover">
                         <thead>
                           <tr>
@@ -46,26 +46,23 @@
                             @endforeach
                             <tr>
                                 <td colspan="5" class="text-center"><Strong>Total</Strong></td>
-                                <td><strong>Rp. {{ number_format($order->total_price) }}</strong></td>
+                                <td><strong>Rp. {{ number_format($cek_order->total_price) }}</strong></td>
                             </tr>
                         </tbody>
                       </table>
-
-
-                      @endif
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        {{-- <div class="col-12 col-sm-12 col-md-3 col-lg-3">
             <div class="card" style="height: 18rem;">
                 <div class="card-header">
                     Pesan Sekarang
                 </div>
                 <div class="card-body">
-                    <a name="" id="" class="btn btn-primary w-100" href="{{ route('checkout.index') }}" role="button"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                    <a name="" id="" class="btn btn-primary w-100" href="#" role="button"><i class="fa fa-shopping-cart"></i> Checkout</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
