@@ -47,11 +47,6 @@ class User extends Authenticatable
         return $this->hasOne(Product::class);
     }
 
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
-    }
-
     public function order()
     {
         return $this->haMany(Order::class);

@@ -38,10 +38,10 @@
                 <label for="exampleInputEmail1">Deskripsi</label>
                 <textarea type="" name="desc" class="form-control" id="summernote" aria-describedby=""></textarea>
               </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Gambar</label>
-              <input type="file" name="image" class="form-control" id="" >
-            </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="image" id="customFile">
+                <label class="custom-file-label" for="customFile">Pilih file</label>
+              </div>
             <button type="submit" class="btn btn-primary w-100 mt-3">Tambah</button>
           </form>
 

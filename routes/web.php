@@ -45,7 +45,7 @@ Route::get('/keranjang','OrderController@keranjang')->name('keranjang.index');
 Route::post('/keranjang/{id}','OrderController@order')->name('tambahkeranjang.index');
 Route::delete('/keranjang/{id}','OrderController@hapusKeranjang')->name('hapuskeranjang.index');
 Route::get('/checkout','OrderController@checkout')->name('checkout.index');
-
-
+Route::get('/profil','UserController@profile')->name('profile.index');
+Route::post('/profil','UserController@updateProfile')->name('updateprofile.index');
 
 Route::get('/home', 'HomeController@index')->name('home');

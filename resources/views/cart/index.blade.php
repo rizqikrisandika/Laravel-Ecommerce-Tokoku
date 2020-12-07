@@ -11,7 +11,7 @@
                     Keranjang
                 </div>
                 <div class="card-body">
-                    @if(empty($order_detail))
+                    @if(!empty($order))
                     <table class="table table-hover">
                         <thead>
                           <tr>
