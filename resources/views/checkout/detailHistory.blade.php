@@ -1,17 +1,29 @@
 @extends('layouts.app')
-@section('title','Keranjang')
+@section('title','Detail Riwayat Belanja')
 
 @section('content')
 
 <div class="container">
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-9 col-lg-9">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
             <div class="card">
-                <div class="card-header">
-                    Keranjang
-                </div>
                 <div class="card-body">
-                    @if(!empty($order and $order->total_price !== 0))
+                    <h4>Pemesanan Sukses</h4>
+                    <h6>Pemesanan anda sukses selanjutnya untuk melakukan pembayaran melalui transfer
+                        <br>
+                        di rekening <strong>Bank BRI Nomer Rekening : 31212-7533545-200</strong>
+                        dengan nominal <strong>Rp. {{ number_format($order->total_price + $order->code) }}</strong>
+                    </h6>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    Detail Riwayat Belanja
+                </div>
+
+                <div class="card-body">
                     <table class="table table-hover">
                         <thead>
                           <tr>
@@ -21,7 +33,6 @@
                             <th scope="col">Jumlah</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Total Harga</th>
-                            <th scope="col">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -33,40 +44,25 @@
                                 <td>{{ $order_detail->total }} unit</td>
                                 <td>Rp. {{ number_format($order_detail->product['price']) }}</td>
                                 <td>Rp. {{ number_format($order_detail->total_price) }}</td>
-                                <td>
-                                    <form action="{{ route('hapuskeranjang.index',['id'=>$order_detail->id]) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-sm btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="5" class="text-center"><Strong>Total</Strong></td>
+                                <td colspan="5" class="text-right"><Strong>Total Harga</Strong></td>
                                 <td><strong>Rp. {{ number_format($order->total_price) }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right"><Strong>Kode Unik</Strong></td>
+                                <td><strong>Rp. {{ number_format($order->code) }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right"><Strong>Total yang harus ditransfer</Strong></td>
+                                <td><strong>Rp. {{ number_format($order->total_price + $order->code) }}</strong></td>
                             </tr>
                         </tbody>
                       </table>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="card" style="height: 18rem;">
-                <div class="card-header">
-                    Pesan Sekarang
-                </div>
-                <div class="card-body">
-                    <a name="" id="" class="btn btn-primary w-100" href="{{ route('checkout.index') }}" role="button"><i class="fa fa-shopping-cart"></i> Checkout</a>
-                </div>
-            </div>
-        </div>
-        @else
-
-        Kosong
-        @endif
     </div>
 </div>
 

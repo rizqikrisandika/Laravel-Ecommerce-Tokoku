@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use UxWeb\SweetAlert\SweetAlert;
 
 class LoginController extends Controller
 {
@@ -42,8 +43,13 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if($user->hasRole('admin')){
+
+            alert()->success('Login Admin', 'Sukses');
+
             return redirect()->route('dashboard.admin');
         }
+
+        alert()->success('Login', 'Sukses');
 
         return redirect()->route('home.index');
     }

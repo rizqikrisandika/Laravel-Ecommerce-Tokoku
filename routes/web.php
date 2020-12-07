@@ -39,13 +39,20 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::get('/','HomeController@index')->name('home.index');
+
 Route::get('/produk','HomeController@produk')->name('produk.index');
 Route::get('/produk/detail/{id}','HomeController@show')->name('detailproduk.index');
-Route::get('/keranjang','OrderController@keranjang')->name('keranjang.index');
-Route::post('/keranjang/{id}','OrderController@order')->name('tambahkeranjang.index');
-Route::delete('/keranjang/{id}','OrderController@hapusKeranjang')->name('hapuskeranjang.index');
+
+Route::get('/keranjang','CartController@keranjang')->name('keranjang.index');
+Route::post('/keranjang/{id}','CartController@order')->name('tambahkeranjang.index');
+Route::delete('/keranjang/{id}','CartController@hapusKeranjang')->name('hapuskeranjang.index');
+
 Route::get('/checkout','OrderController@checkout')->name('checkout.index');
+
 Route::get('/profil','UserController@profile')->name('profile.index');
 Route::post('/profil','UserController@updateProfile')->name('updateprofile.index');
+
+Route::get('/riwayat','HistoryController@index')->name('history.index');
+Route::get('/riwayat/{id}','HistoryController@detail')->name('historydetail.index');
 
 Route::get('/home', 'HomeController@index')->name('home');

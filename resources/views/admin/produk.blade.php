@@ -13,29 +13,33 @@
             Produk</a>
 
         <table class="table">
-            <thead class="thead-light">
+            <thead class="thead-light text-center">
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Gambar</th>
                     <th scope="col">Nama Produk</th>
+                    <th scope="col">Stok</th>
                     <th scope="col">Kategori</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 @foreach ($produk as $produk)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
+                    <td><img style="width: 70px" src="{{ url('/storage/'.$produk->image) }}" alt=""></td>
                     <td>{{ $produk->name }}</td>
+                    <td>{{ $produk->quantity }}</td>
                     <td>{{ $produk->category['name'] }}</td>
                     <td>Rp. {{ $produk->price }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-primary" href="{{ route('detailproduk.admin',['id'=>$produk->id]) }}" role="button">Detail</a>
-                        <a name="" id="" class="btn btn-warning" href="{{ route('tampilubahproduk.admin',['id'=>$produk->id]) }}" role="button">Ubah</a>
+                        <a name="" id="" class="btn btn-sm btn-primary" href="{{ route('detailproduk.admin',['id'=>$produk->id]) }}" role="button"><i class="fa fa-search"></i></a>
+                        <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahproduk.admin',['id'=>$produk->id]) }}" role="button"><i class="fa fa-pen"></i></a>
                         <form class="d-inline" action="{{ route('hapusproduk.admin',['id'=>$produk->id]) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button type="submit" id="" class="btn btn-danger"  role="button">Hapus</button>
+                            <button type="submit" id="" class="btn btn-sm btn-danger"  role="button"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

@@ -8,6 +8,9 @@ use App\Order_Detail;
 
 class Order extends Model
 {
+
+    protected $dates = ['order_date'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

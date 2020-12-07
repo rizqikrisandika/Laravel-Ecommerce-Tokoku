@@ -72,6 +72,8 @@ class RegisterController extends Controller
 
         $user->assignRole('user');
 
+        alert()->success('Daftar Akun', 'Sukses');
+
         return $user;
     }
 }
