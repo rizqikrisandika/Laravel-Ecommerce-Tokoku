@@ -19,23 +19,24 @@ Auth::routes();
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard.admin');
 
-    Route::get('/produk_admin','ProductController@index')->name('produk.admin');
-    Route::get('/produk_admin/tambah','ProductController@tambahForm')->name('tampiltambah.admin');
-    Route::post('/produk_admin/tambah','ProductController@tambahProduk')->name('tambahproduk.admin');
-    Route::get('/produk_admin/ubah/{id}','ProductController@editForm')->name('tampilubahproduk.admin');
-    Route::post('/produk_admin/ubah/{id}','ProductController@updateProduk')->name('updateproduk.admin');
-    Route::delete('/produk_admin/hapus/{id}','ProductController@hapusProduk')->name('hapusproduk.admin');
-    Route::get('/produk_admin/detail/{id}','ProductController@detailProduk')->name('detailproduk.admin');
+    Route::get('/dashboard/produk','ProductController@index')->name('produk.admin');
+    Route::get('/dashboard/produk/tambah','ProductController@tambahForm')->name('tampiltambah.admin');
+    Route::post('/dashboard/produk/tambah','ProductController@tambahProduk')->name('tambahproduk.admin');
+    Route::get('/dashboard/produk/ubah/{id}','ProductController@editForm')->name('tampilubahproduk.admin');
+    Route::post('/dashboard/produk/ubah/{id}','ProductController@updateProduk')->name('updateproduk.admin');
+    Route::delete('/dashboard/produk/hapus/{id}','ProductController@hapusProduk')->name('hapusproduk.admin');
+    Route::get('/dashboard/produk/detail/{id}','ProductController@detailProduk')->name('detailproduk.admin');
 
-    Route::get('/kategori_admin','CategoryController@index')->name('tampilkategori.admin');
-    Route::post('/kategori_admin/tambah','CategoryController@tambahCategory')->name('tambahkategori.admin');
-    Route::get('/kategori_admin/ubah/{id}','CategoryController@editForm')->name('tampilubahkategori.admin');
-    Route::post('/kategori_admin/ubah/{id}','CategoryController@updateCategory')->name('updatekategori.admin');
-    Route::delete('/kategori_admin/hapus/{id}','CategoryController@hapusCategory')->name('hapuskategori.admin');
+    Route::get('/dashboard/kategori','CategoryController@index')->name('tampilkategori.admin');
+    Route::post('/dashboard/kategori/tambah','CategoryController@tambahCategory')->name('tambahkategori.admin');
+    Route::get('/dashboard/kategori/ubah/{id}','CategoryController@editForm')->name('tampilubahkategori.admin');
+    Route::post('/dashboard/kategori/ubah/{id}','CategoryController@updateCategory')->name('updatekategori.admin');
+    Route::delete('/dashboard/kategori/hapus/{id}','CategoryController@hapusCategory')->name('hapuskategori.admin');
 
-    Route::get('/pengguna','UserController@index')->name('user.admin');
+    Route::get('/dashboard/pengguna','UserController@index')->name('user.admin');
 
-    Route::get('/pemesanan','OrderController@index')->name('pemesanan.admin');
+    Route::get('/dashboard/pemesanan','OrderController@index')->name('pemesanan.admin');
+    Route::get('/dashboard/pemesanan/{id}','OrderController@detail')->name('pemesananDetail.admin');
 });
 
 Route::get('/','HomeController@index')->name('home.index');

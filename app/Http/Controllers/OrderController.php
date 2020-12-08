@@ -20,7 +20,19 @@ class OrderController extends Controller
 
     public function index()
     {
-        return view('admin.pemesanan');
+
+        $order = Order::where('status','=','checkout')->get();
+
+        return view('admin.pemesanan',compact('order'));
+    }
+
+    public function detail($id)
+    {
+        $order = Order::where('id',$id)->first();
+
+        $order_detail = Order_Detail::where('order_id', $order->id)->get();
+
+        return view('admin.pemesananDetail',compact('order','order_detail'));
     }
 
     public function checkout()

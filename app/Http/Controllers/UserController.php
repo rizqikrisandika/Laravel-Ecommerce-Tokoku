@@ -34,14 +34,23 @@ class UserController extends Controller
     {
         $user = User::where('id',Auth::user()->id)->first();
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->city = $request->city;
-        $user->address = $request->address;
-        $user->zipcode = $request->zipcode;
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:12',
+            'city' => 'required|string',
+            'address' => 'required|string|max:100',
+            'zipcode' => 'required|string',
+        ]);
 
-        $user->update();
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->phone = $request->phone;
+            $user->city = $request->city;
+            $user->address = $request->address;
+            $user->zipcode = $request->zipcode;
+
+            $user->update();
 
         alert()->success('Ubah Profil', 'Sukses');
 

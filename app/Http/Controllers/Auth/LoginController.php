@@ -53,4 +53,17 @@ class LoginController extends Controller
 
         return redirect()->route('home.index');
     }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        alert()->success('Logout', 'Sukses');
+
+        return redirect()->route('home.index');
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Product;
+use App\Order;
 
 class DashboardController extends Controller
 {
@@ -24,6 +25,12 @@ class DashboardController extends Controller
         $produk = Product::get();
         $produkcount = count($produk);
 
-        return view('admin.index',compact(['usercount','produkcount']));
+        $order_total = Order::get()->sum('total_price');
+
+        $order = Order::where('status','=','checkout')->orderBy('order_date','desc')->take(4)->get();
+
+
+
+        return view('admin.index',compact(['usercount','produkcount','order_total','order']));
     }
 }

@@ -13,24 +13,34 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama Produk</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Harga</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col">Tanggal/Waktu</th>
+                    <th scope="col">Nama Pemesan</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Detail</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($produk as $produk) --}}
+                @foreach ($order as $order)
                 <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $order->order_date }}</td>
+                    <td>{{ $order->user['name'] }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-primary" href="" role="button">Detail</a>
+                        @if ($order->status == 'checkout')
+                            Belum Dibayar
+                        @else
+                            Sudah Dibayar
+                        @endif
+                    </td>
+                    <td>Rp. {{ number_format($order->total_price += $order->code) }}</td>
+                    <td>
+                        <a name="" id="" class="btn btn-primary" href="{{ route('pemesananDetail.admin',['id'=>$order->id]) }}" role="button">
+                            <i class="fa fa-search"></i>
+                        </a>
                     </td>
                 </tr>
-                {{-- @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </div>

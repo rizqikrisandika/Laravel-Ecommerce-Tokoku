@@ -36,7 +36,7 @@
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <h4>2</h4>
+                    <h4>Rp. {{ number_format($order_total) }}</h4>
                 </blockquote>
             </div>
         </div>
@@ -44,7 +44,7 @@
 </div>
 
 <div class="wrapper-order mt-5">
-    <div class="card" style="height: 18rem;">
+    <div class="card">
         <div class="card-header">
             Pemesanan Terbaru
         </div>
@@ -53,25 +53,34 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Produk</th>
-                        <th scope="col">Kategori</th>
-                        <th scope="col">Jumlah</th>
+                        <th scope="col">Tanggal/Waktu</th>
+                        <th scope="col">Nama Pemesan</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Total</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">Detail</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($pengguna as $pengguna) --}}
+                    @foreach ($order as $order)
                     <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $order->order_date }}</td>
+                        <td>{{ $order->user['name'] }}</td>
                         <td>
-
+                            @if ($order->status == 'checkout')
+                                Belum Dibayar
+                            @else
+                                Sudah Dibayar
+                            @endif
+                        </td>
+                        <td>Rp. {{ number_format($order->total_price += $order->code) }}</td>
+                        <td>
+                            <a name="" id="" class="btn btn-primary" href="{{ route('pemesananDetail.admin',['id'=>$order->id]) }}" role="button">
+                                <i class="fa fa-search"></i>
+                            </a>
                         </td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>
