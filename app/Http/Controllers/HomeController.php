@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function produk()
     {
-        $produk =  Product::orderBy('created_at','desc')->get();
+        $produk =  Product::orderBy('created_at','desc')->paginate(12);
         $kategori = Category::all();
 
         return view('produk.index',compact('produk','kategori'));
