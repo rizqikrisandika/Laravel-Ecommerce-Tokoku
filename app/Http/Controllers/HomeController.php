@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        $produk = Product::orderBy('created_at','desc')->take(4)->get();
+        $produk = Product::orderBy('created_at','desc')->take(8)->get();
 
         return view('home.index',compact('produk'));
     }

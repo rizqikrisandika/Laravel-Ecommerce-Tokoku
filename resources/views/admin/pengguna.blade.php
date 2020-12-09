@@ -15,22 +15,23 @@
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col">Detail</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pengguna as $pengguna)
+                @foreach ($pengguna as $no => $data)
                 <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $pengguna->name }}</td>
-                    <td>{{ $pengguna->email }}</td>
+                    <th scope="row">{{ $pengguna->firstItem() + $no }}</th>
+                    <td>{{ $data->name }}</td>
+                    <td>{{ $data->email }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-primary" href="" role="button">Detail</a>
+                        <a name="" id="" class="btn btn-primary" href="" role="button"><i class="fa fa-search"></i></a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        {{ $pengguna->links() }}
     </div>
 </div>
 

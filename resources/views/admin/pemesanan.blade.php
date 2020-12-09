@@ -21,21 +21,21 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($order as $order)
+                @foreach ($order as $no => $data)
                 <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $order->order_date }}</td>
-                    <td>{{ $order->user['name'] }}</td>
+                    <th scope="row">{{ $order->firstItem()+$no }}</th>
+                    <td>{{ $data->order_date }}</td>
+                    <td>{{ $data->user['name'] }}</td>
                     <td>
-                        @if ($order->status == 'checkout')
+                        @if ($data->status == 'checkout')
                             Belum Dibayar
                         @else
                             Sudah Dibayar
                         @endif
                     </td>
-                    <td>Rp. {{ number_format($order->total_price += $order->code) }}</td>
+                    <td>Rp. {{ number_format($data->total_price += $data->code) }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-primary" href="{{ route('pemesananDetail.admin',['id'=>$order->id]) }}" role="button">
+                        <a name="" id="" class="btn btn-primary" href="{{ route('pemesananDetail.admin',['id'=>$data->id]) }}" role="button">
                             <i class="fa fa-search"></i>
                         </a>
                     </td>
@@ -43,6 +43,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $order->links() }}
     </div>
 </div>
 

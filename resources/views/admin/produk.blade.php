@@ -25,18 +25,18 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach ($produk as $produk)
+                @foreach ($produk as $no => $data)
                 <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td><img style="width: 70px" src="{{ url('/storage/'.$produk->image) }}" alt=""></td>
-                    <td>{{ $produk->name }}</td>
-                    <td>{{ $produk->quantity }}</td>
-                    <td>{{ $produk->category['name'] }}</td>
-                    <td>Rp. {{ $produk->price }}</td>
+                    <th scope="row">{{ $produk->firstItem()+$no }}</th>
+                    <td><img style="width: 70px" src="{{ url('/storage/'.$data->image) }}" alt=""></td>
+                    <td>{{ $data->name }}</td>
+                    <td>{{ $data->quantity }}</td>
+                    <td>{{ $data->category['name'] }}</td>
+                    <td>Rp. {{ $data->price }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-sm btn-primary" href="{{ route('detailproduk.admin',['id'=>$produk->id]) }}" role="button"><i class="fa fa-search"></i></a>
-                        <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahproduk.admin',['id'=>$produk->id]) }}" role="button"><i class="fa fa-pen"></i></a>
-                        <form class="d-inline" action="{{ route('hapusproduk.admin',['id'=>$produk->id]) }}" method="post">
+                        <a name="" id="" class="btn btn-sm btn-primary" href="{{ route('detailproduk.admin',['id'=>$data->id]) }}" role="button"><i class="fa fa-search"></i></a>
+                        <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahproduk.admin',['id'=>$data->id]) }}" role="button"><i class="fa fa-pen"></i></a>
+                        <form class="d-inline" action="{{ route('hapusproduk.admin',['id'=>$data->id]) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" id="" class="btn btn-sm btn-danger"  role="button"><i class="fa fa-trash"></i></button>
@@ -46,6 +46,8 @@
                 @endforeach
             </tbody>
         </table>
+
+        {{ $produk->links() }}
     </div>
 </div>
 

@@ -21,7 +21,7 @@ class OrderController extends Controller
     public function index()
     {
 
-        $order = Order::where('status','=','checkout')->get();
+        $order = Order::where('status','=','checkout')->paginate(5);
 
         return view('admin.pemesanan',compact('order'));
     }
