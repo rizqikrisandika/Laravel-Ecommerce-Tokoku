@@ -111,6 +111,8 @@ class ProductController extends Controller
             $imageName = 'img_'.time().'.'.$imageExtension;
             $imagePath = $request->image->storeAs('images',$imageName,'public');
 
+            Storage::disk('public')->delete($produk->image);
+
             $produk->name = $request->name;
             $produk->price = $request->price;
             $produk->category_id = $request->category_id;

@@ -53,6 +53,7 @@
                             @endif
                         @else
 
+                        @role('user')
                         @php
 
                             $order = App\Order::where('user_id',Auth::user()->id)->where('status','=','keranjang')->first();
@@ -71,6 +72,7 @@
                                 @endif
                             </a>
                         </li>
+                        @endrole
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -78,12 +80,21 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @role('user')
                                     <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         {{ __('Ubah Profil') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('history.index') }}">
                                         {{ __('Riwayat Belanja') }}
                                     </a>
+                                    @endrole
+
+                                    @role('admin')
+                                    <a class="dropdown-item" href="{{ route('dashboard.admin') }}">
+                                        {{ __('Dashboard') }}
+                                    </a>
+                                    @endrole
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

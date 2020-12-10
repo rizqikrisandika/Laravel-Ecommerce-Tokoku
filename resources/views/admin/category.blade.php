@@ -9,12 +9,16 @@
         Kategori Produk
     </div>
     <div class="card-body">
-        <form action="{{ route('tambahkategori.admin') }}" method="POST">
+        <form action="{{ route('tambahkategori.admin') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Tambah Kategori</label>
                 <input type="text" name="name" class="form-control" id="" aria-describedby="">
             </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="image" id="customFile">
+                <label class="custom-file-label" for="customFile">Pilih Gambar</label>
+              </div>
             <button type="submit" class="btn btn-primary w-100 mt-3">Simpan</button>
         </form>
 
@@ -22,27 +26,30 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Gambar</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($kategori as $kategori)
+                @foreach ($kategori as $no => $data)
                 <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $kategori->name }}</td>
+                    <th scope="row">{{ $kategori->firstItem() + $no }}</th>
+                    <td><img style="width: 70px" src="{{ url('/storage/'.$data->image) }}" alt=""></td>
+                    <td>{{ $data->name }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-warning" href="{{ route('tampilubahkategori.admin',['id'=>$kategori->id]) }}" role="button">Ubah</a>
-                        <form class="d-inline" action="{{ route('hapuskategori.admin',['id'=>$kategori->id]) }}" method="post">
+                        <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahkategori.admin',['id'=>$data->id]) }}" role="button"><i class="fa fa-pen"></i></a>
+                        <form class="d-inline" action="{{ route('hapuskategori.admin',['id'=>$data->id]) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button  type="submit" class="btn btn-danger" role="button">Hapus</button>
+                            <button  type="submit" class="btn btn-sm btn-danger" role="button"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        {{ $kategori->links() }}
     </div>
 </div>
 

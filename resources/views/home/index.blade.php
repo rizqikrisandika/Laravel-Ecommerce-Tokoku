@@ -18,44 +18,8 @@
             </div>
         </div>
     </div>
-
-    <h2 class="mt-5 font-weight-bold">Kategori</h2>
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
     <h2 class="mt-5 font-weight-bold">Produk Terbaru</h2>
-    <div class="content-produk-terbaru mt5">
+    <div class="content-produk-terbaru">
         <div class="row">
             @foreach ($produk as $produk)
             <div class="col-6 col-lg-3 col-md-6 col-sm-6 mt-5">
@@ -76,10 +40,27 @@
                 </div>
             </div>
             @endforeach
-
-
         </div>
     </div>
+
+    <h2 class="mt-5 font-weight-bold">Kategori</h2>
+    <div class="row">
+        @foreach ($kategori as $kategori)
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 mt-5">
+            <a href="">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="{{ url('/storage/'.$kategori->image) }}" class="card-img-top" alt="...">
+                    </div>
+                </div>
+            </a>
+        </div>
+        @endforeach
+    </div>
+
+
+
+
 
     <h2 class="mt-5 font-weight-bold">Layanan Kami</h2>
     <div class="content-layanan mt-5">

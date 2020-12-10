@@ -40,7 +40,7 @@
               </div>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="image" id="customFile">
-                <label class="custom-file-label" for="customFile">Pilih file</label>
+                <label class="custom-file-label" for="customFile">Pilih Foto</label>
               </div>
             <button type="submit" class="btn btn-primary w-100 mt-3">Tambah</button>
           </form>

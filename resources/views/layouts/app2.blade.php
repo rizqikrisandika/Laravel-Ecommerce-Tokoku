@@ -119,7 +119,7 @@
         </div>
     </div>
 
-    <div class="footer-admin mt-5">
+    <div class="footer-admin h-100 mt-5">
         <div class="card">
             <div class="card-body">
                 <div class="text-center">
