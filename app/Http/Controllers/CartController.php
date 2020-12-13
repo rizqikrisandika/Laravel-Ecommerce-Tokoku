@@ -15,11 +15,6 @@ use Illuminate\Support\Str;
 class CartController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function order(Request $request, $slug)
     {
     	$produk = Product::where('slug', $slug)->first();
@@ -81,7 +76,14 @@ class CartController extends Controller
 
     public function keranjang()
     {
-        $order = Order::where('user_id', Auth::user()->id)->where('status','=','keranjang')->first();
+
+        $order = [];
+
+        if(!empty(Auth::user()->id))
+        {
+            $order = Order::where('user_id', Auth::user()->id)->where('status','=','keranjang')->first();
+        }
+
         $order_detail = [];
         if(!empty($order))
         {

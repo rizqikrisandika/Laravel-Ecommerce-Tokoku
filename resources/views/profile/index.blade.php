@@ -4,12 +4,15 @@
 @section('content')
 
 <div class="container">
-    <div class="col-8 mx-auto">
-        <div class="card">
-            <div class="card-header">
-                Profil
-            </div>
-            <div class="card-body">
+    <nav aria-label="breadcrumb white">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Profil</li>
+        </ol>
+      </nav>
+    <div class="col-8 mx-auto mt-5">
+        <h3 class="text-center mb-2">Profil</h3>
+
                 <form action="{{ route('updateprofile.index')}}" method="POST" >
                     @csrf
                     <div class="form-group">
@@ -38,9 +41,6 @@
                     </div>
                     <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Simpan</button>
                 </form>
-
-            </div>
-        </div>
     </div>
 </div>
 

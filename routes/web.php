@@ -39,21 +39,23 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard/pemesanan/{slug}','OrderController@detail')->name('pemesananDetail.admin');
 });
 
+Route::group(['middleware' => ['role:user']], function () {
+    Route::post('/keranjang/{slug}','CartController@order')->name('tambahkeranjang.index');
+    Route::delete('/keranjang/{slug}','CartController@hapusKeranjang')->name('hapuskeranjang.index');
+
+    Route::get('/riwayat','HistoryController@index')->name('history.index');
+    Route::get('/riwayat/{slug}','HistoryController@detail')->name('historydetail.index');
+
+    Route::get('/checkout','OrderController@checkout')->name('checkout.index');
+
+    Route::get('/profil','UserController@profile')->name('profile.index');
+    Route::post('/profil','UserController@updateProfile')->name('updateprofile.index');
+
+});
+
 Route::get('/','HomeController@index')->name('home.index');
 
 Route::get('/produk','HomeController@produk')->name('produk.index');
 Route::get('/produk/{slug}','HomeController@show')->name('detailproduk.index');
 
 Route::get('/keranjang','CartController@keranjang')->name('keranjang.index');
-Route::post('/keranjang/{slug}','CartController@order')->name('tambahkeranjang.index');
-Route::delete('/keranjang/{slug}','CartController@hapusKeranjang')->name('hapuskeranjang.index');
-
-Route::get('/checkout','OrderController@checkout')->name('checkout.index');
-
-Route::get('/profil','UserController@profile')->name('profile.index');
-Route::post('/profil','UserController@updateProfile')->name('updateprofile.index');
-
-Route::get('/riwayat','HistoryController@index')->name('history.index');
-Route::get('/riwayat/{slug}','HistoryController@detail')->name('historydetail.index');
-
-Route::get('/home', 'HomeController@index')->name('home');

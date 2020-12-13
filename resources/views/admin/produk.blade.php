@@ -28,11 +28,21 @@
                 @foreach ($produk as $no => $data)
                 <tr>
                     <th scope="row">{{ $produk->firstItem()+$no }}</th>
-                    <td><img style="width: 70px" src="{{ url('/storage/'.$data->image) }}" alt=""></td>
+                    <td>
+                        <a href="{{ route('detailproduk.admin',['slug'=>$data->slug]) }}">
+                            <img style="width: 70px" src="{{ url('/storage/'.$data->image) }}" alt="">
+                        </a>
+                    </td>
                     <td>{{ $data->name }}</td>
-                    <td>{{ $data->quantity }}</td>
+                    <td>
+                        @if ($data->quantity == 0)
+                            <span class="badge badge-danger">Habis</span>
+                        @else
+                            {{ $data->quantity }}
+                        @endif
+                    </td>
                     <td>{{ $data->category['name'] }}</td>
-                    <td>Rp. {{ $data->price }}</td>
+                    <td>Rp. {{ number_format($data->price,0,",",".") }}</td>
                     <td>
                         <a name="" id="" class="btn btn-sm btn-primary" href="{{ route('detailproduk.admin',['slug'=>$data->slug]) }}" role="button"><i class="fa fa-search"></i></a>
                         <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahproduk.admin',['slug'=>$data->slug]) }}" role="button"><i class="fa fa-pen"></i></a>

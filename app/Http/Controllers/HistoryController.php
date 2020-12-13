@@ -18,7 +18,7 @@ class HistoryController extends Controller
     public function index()
     {
 
-        $order = Order::where('user_id',Auth::user()->id)->where('status','=','checkout')->get();
+        $order = Order::where('user_id',Auth::user()->id)->where('status','=','checkout')->paginate(5);
 
         return view('checkout.history',compact('order'));
     }

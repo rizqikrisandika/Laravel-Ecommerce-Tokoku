@@ -33,9 +33,9 @@
                             Sudah Dibayar
                         @endif
                     </td>
-                    <td>Rp. {{ number_format($data->total_price += $data->code) }}</td>
+                    <td>Rp. {{ number_format($data->total_price += $data->code,0,",",".") }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-primary" href="{{ route('pemesananDetail.admin',['id'=>$data->id]) }}" role="button">
+                        <a name="" id="" class="btn btn-primary" href="{{ route('pemesananDetail.admin',['slug'=>$data->slug]) }}" role="button">
                             <i class="fa fa-search"></i>
                         </a>
                     </td>

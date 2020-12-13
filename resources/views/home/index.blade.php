@@ -33,7 +33,7 @@
                         <a href="{{ route('detailproduk.index',['slug'=>$produk->slug]) }}">
                             <h5 class="card-title">{{ $produk->name }}</h5>
                         </a>
-                        <p class="card-text">Rp. {{number_format($produk->price,0)}}</p>
+                        <p class="card-text">Rp. {{number_format($produk->price,0,",",".")}}</p>
                         <p class="card-text">{{$produk->category['name']}}</p>
                         <p class="card-text">{{$produk->created_at->diffForHumans()}}</p>
                     </div>

@@ -44,6 +44,12 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('keranjang.index') }}">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span class="badge badge-danger">0</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
                             </li>
                             @if (Route::has('register'))
@@ -69,6 +75,8 @@
                                 <i class="fa fa-shopping-cart"></i>
                                 @if (!empty($notif))
                                     <span class="badge badge-danger">{{ $notif }}</span>
+                                @else
+                                    <span class="badge badge-danger">0</span>
                                 @endif
                             </a>
                         </li>

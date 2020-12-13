@@ -2,6 +2,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+body{
+    background-color: white;
+}
+
 .jumbotron{
     background-image: url('image/background-2.jpg');
     background-repeat: no-repeat;

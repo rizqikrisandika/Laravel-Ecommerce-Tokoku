@@ -36,7 +36,7 @@
             </div>
             <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <h4>Rp. {{ number_format($order_total) }}</h4>
+                    <h4>Rp. {{ number_format($order_total,0,",",".") }}</h4>
                 </blockquote>
             </div>
         </div>
@@ -73,9 +73,9 @@
                                 Sudah Dibayar
                             @endif
                         </td>
-                        <td>Rp. {{ number_format($order->total_price += $order->code) }}</td>
+                        <td>Rp. {{ number_format($order->total_price += $order->code,0,",",".") }}</td>
                         <td>
-                            <a name="" id="" class="btn btn-primary" href="{{ route('pemesananDetail.admin',['id'=>$order->id]) }}" role="button">
+                            <a name="" id="" class="btn btn-primary" href="{{ route('pemesananDetail.admin',['slug'=>$order->slug]) }}" role="button">
                                 <i class="fa fa-search"></i>
                             </a>
                         </td>

@@ -21,7 +21,7 @@
                             Sudah Dibayar
                         @endif
                     </h6>
-                    <h6>Total : Rp. {{ number_format($order->total_price + $order->code) }}</h6>
+                    <h6>Total : Rp. {{ number_format($order->total_price + $order->code,0,",",".") }}</h6>
                     <h6>Tanggal/Waktu : {{ $order->order_date->format('d/m/Y h:i:s') }}</h6>
                 </div>
 
@@ -44,21 +44,21 @@
                                 <td><img style="width: 70px" src="{{ url('/storage/'.$order_detail->product['image']) }}" alt=""></td>
                                 <td>{{ $order_detail->product['name'] }}</td>
                                 <td>{{ $order_detail->total }} unit</td>
-                                <td>Rp. {{ number_format($order_detail->product['price']) }}</td>
-                                <td>Rp. {{ number_format($order_detail->total_price) }}</td>
+                                <td>Rp. {{ number_format($order_detail->product['price'],0,",",".") }}</td>
+                                <td>Rp. {{ number_format($order_detail->total_price,0,",",".") }}</td>
                             </tr>
                             @endforeach
                             <tr>
                                 <td colspan="5" class="text-right"><Strong>Total Harga</Strong></td>
-                                <td><strong>Rp. {{ number_format($order->total_price) }}</strong></td>
+                                <td><strong>Rp. {{ number_format($order->total_price,0,",",".") }}</strong></td>
                             </tr>
                             <tr>
                                 <td colspan="5" class="text-right"><Strong>Kode Unik</Strong></td>
-                                <td><strong>Rp. {{ number_format($order->code) }}</strong></td>
+                                <td><strong>Rp. {{ number_format($order->code,0,",",".") }}</strong></td>
                             </tr>
                             <tr>
                                 <td colspan="5" class="text-right"><Strong>Total yang harus ditransfer</Strong></td>
-                                <td><strong>Rp. {{ number_format($order->total_price + $order->code) }}</strong></td>
+                                <td><strong>Rp. {{ number_format($order->total_price + $order->code,0,",",".") }}</strong></td>
                             </tr>
                         </tbody>
                       </table>
