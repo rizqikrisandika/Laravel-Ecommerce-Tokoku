@@ -38,8 +38,8 @@
                     <td><img style="width: 70px" src="{{ url('/storage/'.$data->image) }}" alt=""></td>
                     <td>{{ $data->name }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahkategori.admin',['id'=>$data->id]) }}" role="button"><i class="fa fa-pen"></i></a>
-                        <form class="d-inline" action="{{ route('hapuskategori.admin',['id'=>$data->id]) }}" method="post">
+                        <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahkategori.admin',['slug'=>$data->slug]) }}" role="button"><i class="fa fa-pen"></i></a>
+                        <form class="d-inline" action="{{ route('hapuskategori.admin',['slug'=>$data->slug]) }}" method="post">
                             @csrf
                             @method('delete')
                             <button  type="submit" class="btn btn-sm btn-danger" role="button"><i class="fa fa-trash"></i></button>

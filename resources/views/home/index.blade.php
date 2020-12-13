@@ -25,12 +25,12 @@
             <div class="col-6 col-lg-3 col-md-6 col-sm-6 mt-5">
                 <div class="card" style="">
                     <div class="card-body card-img p-2">
-                        <a href="{{ route('detailproduk.index',['id'=>$produk->id]) }}">
+                        <a href="{{ route('detailproduk.index',['slug'=>$produk->slug]) }}">
                             <img src="{{ url('/storage/'.$produk->image) }}" class="card-img-top img-responsive" alt="...">
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="{{ route('detailproduk.index',['id'=>$produk->id]) }}">
+                        <a href="{{ route('detailproduk.index',['slug'=>$produk->slug]) }}">
                             <h5 class="card-title">{{ $produk->name }}</h5>
                         </a>
                         <p class="card-text">Rp. {{number_format($produk->price,0)}}</p>

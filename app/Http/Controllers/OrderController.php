@@ -26,9 +26,9 @@ class OrderController extends Controller
         return view('admin.pemesanan',compact('order'));
     }
 
-    public function detail($id)
+    public function detail($slug)
     {
-        $order = Order::where('id',$id)->first();
+        $order = Order::where('slug',$slug)->first();
 
         $order_detail = Order_Detail::where('order_id', $order->id)->get();
 
@@ -66,7 +66,7 @@ class OrderController extends Controller
 
         alert()->success('Checkout Produk', 'Sukses');
 
-        return redirect()->route('historydetail.index',['id'=>$order->id]);
+        return redirect()->route('historydetail.index',['slug'=>$order->slug]);
 
     }
 

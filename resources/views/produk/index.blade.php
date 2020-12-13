@@ -29,11 +29,11 @@
                     @foreach ($produk as $no => $data)
                     <div class="col-12 col-lg-4 col-md-4 col-sm-6 mt-5">
                         <div class="card">
-                            <a href="{{ route('detailproduk.index',['id'=>$data->id]) }}">
+                            <a href="{{ route('detailproduk.index',['slug'=>$data->slug]) }}">
                                 <img src="{{ url('/storage/'.$data->image) }}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <a href="{{ route('detailproduk.index',['id'=>$data->id]) }}">
+                                <a href="{{ route('detailproduk.index',['slug'=>$data->slug]) }}">
                                     <h5 class="card-title">{{ $data->name }}</h5>
                                 </a>
                                 <p class="card-text">Rp. {{number_format($data->price,0)}}</p>

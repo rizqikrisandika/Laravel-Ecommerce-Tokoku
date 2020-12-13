@@ -7,6 +7,7 @@ use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -35,6 +36,7 @@ class CategoryController extends Controller
 
         $kategori = new Category();
         $kategori->name = $request->name;
+        $kategori->slug = Str::slug($request->name);
         $kategori->image = $imagePath;
         $kategori->save();
 
@@ -43,21 +45,20 @@ class CategoryController extends Controller
         return redirect()->route('tampilkategori.admin');
     }
 
-    public function editForm($id)
+    public function editForm($slug)
     {
-        $kategori = Category::findOrfail($id);
+        $kategori = Category::where('slug',$slug)->first();
 
         return view('admin.editCategory',compact('kategori'));
     }
 
-    public function updateCategory(Request $request, $id)
+    public function updateCategory(Request $request, $slug)
     {
         $request->validate([
             'name' => 'required|string',
-            'image'=>'required|image|mimes:jpeg,png,jpg|max:1024',
         ]);
 
-        $kategori = Category::findOrfail($id);
+        $kategori = Category::where('slug',$slug)->first();
 
         if($request->image)
         {
@@ -69,6 +70,7 @@ class CategoryController extends Controller
             Storage::disk('public')->delete($kategori->image);
 
             $kategori->name = $request->name;
+            $kategori->slug = Str::slug($request->name);
             $kategori->image = $imagePath;
 
             $kategori->save();
@@ -76,6 +78,7 @@ class CategoryController extends Controller
         }else{
 
             $kategori->name = $request->name;
+            $kategori->slug = Str::slug($request->name);
 
             $kategori->save();
         }
@@ -86,12 +89,12 @@ class CategoryController extends Controller
         return redirect()->route('tampilkategori.admin');
     }
 
-    public function hapusCategory($id)
+    public function hapusCategory($slug)
     {
-        $kategori = Category::where('id',$id)->first();
+        $kategori = Category::where('slug',$slug)->first();
         Storage::disk('public')->delete($kategori->image);
 
-        Category::where('id',$id)->delete();
+        Category::where('slug',$slug)->delete();
 
         alert()->error('Hapus Kategori', 'Sukses');
 

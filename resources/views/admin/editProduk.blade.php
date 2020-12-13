@@ -9,7 +9,7 @@
         Ubah Produk
     </div>
     <div class="card-body">
-        <form action="{{ route('updateproduk.admin',['id'=>$produk->id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('updateproduk.admin',['slug'=>$produk->slug]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
               <label for="exampleInputEmail1">Nama</label>

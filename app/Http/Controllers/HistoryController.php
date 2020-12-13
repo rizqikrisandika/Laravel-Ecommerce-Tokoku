@@ -23,9 +23,9 @@ class HistoryController extends Controller
         return view('checkout.history',compact('order'));
     }
 
-    public function detail($id)
+    public function detail($slug)
     {
-        $order = Order::where('id',$id)->first();
+        $order = Order::where('slug',$slug)->first();
 
         $order_detail = Order_Detail::where('order_id', $order->id)->get();
 

@@ -9,6 +9,7 @@ use UxWeb\SweetAlert\SweetAlert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -34,9 +35,9 @@ class ProductController extends Controller
         return view('admin.tambahProduk',compact('kategori'));
     }
 
-    public function detailProduk($id)
+    public function detailProduk($slug)
     {
-        $produk = Product::findOrFail($id);
+        $produk = Product::where('slug',$slug)->first();
 
         return view('admin.detailProduk',compact('produk'));
     }
@@ -64,6 +65,7 @@ class ProductController extends Controller
 
         $produk = new Product();
         $produk->name = $request->name;
+        $produk->slug = Str::slug($request->name);
         $produk->price = $request->price;
         $produk->category_id = $request->category_id;
         $produk->image = $imagePath;
@@ -81,15 +83,15 @@ class ProductController extends Controller
 
     }
 
-    public function editForm($id)
+    public function editForm($slug)
     {
-        $produk = Product::findOrfail($id);
+        $produk = Product::where('slug',$slug)->first();
         $kategori = Category::all();
 
         return view('admin.editProduk',compact('produk','kategori'));
     }
 
-    public function updateProduk(Request $request,$id)
+    public function updateProduk(Request $request,$slug)
     {
 
         $request->validate([
@@ -102,7 +104,7 @@ class ProductController extends Controller
         ]);
 
         $tanggal = Carbon::now();
-        $produk = Product::findOrFail($id);
+        $produk = Product::where('slug',$slug)->first();
 
         if($request->image)
         {
@@ -114,6 +116,7 @@ class ProductController extends Controller
             Storage::disk('public')->delete($produk->image);
 
             $produk->name = $request->name;
+            $produk->slug = Str::slug($request->name);
             $produk->price = $request->price;
             $produk->category_id = $request->category_id;
             $produk->image = $imagePath;
@@ -126,6 +129,7 @@ class ProductController extends Controller
         }else{
 
             $produk->name = $request->name;
+            $produk->slug = Str::slug($request->name);
             $produk->price = $request->price;
             $produk->category_id = $request->category_id;
             $produk->quantity = $request->quantity;
@@ -140,12 +144,12 @@ class ProductController extends Controller
         return redirect()->route('produk.admin');
     }
 
-    public function hapusProduk($id)
+    public function hapusProduk($slug)
     {
-        $produk = Product::where('id',$id)->first();
+        $produk = Product::where('slug',$slug)->first();
         Storage::disk('public')->delete($produk->image);
 
-        Product::where('id',$id)->delete();
+        Product::where('slug',$slug)->delete();
 
         alert()->error('Hapus Produk', 'Sukses');
 

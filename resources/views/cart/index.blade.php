@@ -34,7 +34,7 @@
                                 <td>Rp. {{ number_format($order_detail->product['price']) }}</td>
                                 <td>Rp. {{ number_format($order_detail->total_price) }}</td>
                                 <td>
-                                    <form action="{{ route('hapuskeranjang.index',['id'=>$order_detail->id]) }}" method="post">
+                                    <form action="{{ route('hapuskeranjang.index',['slug'=>$order_detail->slug]) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-sm btn-danger">

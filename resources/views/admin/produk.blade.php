@@ -34,9 +34,9 @@
                     <td>{{ $data->category['name'] }}</td>
                     <td>Rp. {{ $data->price }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-sm btn-primary" href="{{ route('detailproduk.admin',['id'=>$data->id]) }}" role="button"><i class="fa fa-search"></i></a>
-                        <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahproduk.admin',['id'=>$data->id]) }}" role="button"><i class="fa fa-pen"></i></a>
-                        <form class="d-inline" action="{{ route('hapusproduk.admin',['id'=>$data->id]) }}" method="post">
+                        <a name="" id="" class="btn btn-sm btn-primary" href="{{ route('detailproduk.admin',['slug'=>$data->slug]) }}" role="button"><i class="fa fa-search"></i></a>
+                        <a name="" id="" class="btn btn-sm btn-warning" href="{{ route('tampilubahproduk.admin',['slug'=>$data->slug]) }}" role="button"><i class="fa fa-pen"></i></a>
+                        <form class="d-inline" action="{{ route('hapusproduk.admin',['slug'=>$data->slug]) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" id="" class="btn btn-sm btn-danger"  role="button"><i class="fa fa-trash"></i></button>

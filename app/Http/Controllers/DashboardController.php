@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Product;
 use App\Order;
+use App\Role;
 
 class DashboardController extends Controller
 {
@@ -19,7 +20,8 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $user = User::get();
+
+        $user = User::role('user')->get();
         $usercount = count($user);
 
         $produk = Product::get();

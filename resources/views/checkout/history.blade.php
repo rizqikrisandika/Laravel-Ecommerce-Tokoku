@@ -38,7 +38,7 @@
                                 </td>
                                 <td>Rp. {{ number_format($order->total_price) }}</td>
                                 <td>
-                                        <a class="btn btn-sm btn-primary" href="{{ route('historydetail.index',['id'=>$order->id]) }}">
+                                        <a class="btn btn-sm btn-primary" href="{{ route('historydetail.index',['slug'=>$order->slug]) }}">
                                             <i class="fa fa-search"></i>
                                         </a>
                                 </td>

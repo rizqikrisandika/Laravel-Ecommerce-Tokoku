@@ -9,6 +9,7 @@ use App\Order_Detail;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 
 class CartController extends Controller
@@ -19,16 +20,16 @@ class CartController extends Controller
         $this->middleware('auth');
     }
 
-    public function order(Request $request, $id)
+    public function order(Request $request, $slug)
     {
-    	$produk = Product::where('id', $id)->first();
+    	$produk = Product::where('slug', $slug)->first();
         $tanggal = Carbon::now();
 
         if($request->total > $produk->quantity)
         {
             alert()->error('Pemesanan Melebihi Stok Produk', 'Gagal');
 
-            return redirect()->route('detailproduk.index',$id);
+            return redirect()->route('detailproduk.index',$slug);
         }
 
         $cek_order = Order::where('user_id',Auth::user()->id)->where('status','=','keranjang')->first();
@@ -37,6 +38,7 @@ class CartController extends Controller
         {
             $order = new Order;
             $order->user_id = Auth::user()->id;
+            $order->slug = Str::slug(Auth::user()->name.$tanggal);
             $order->order_date = $tanggal;
             $order->status = 'keranjang';
             $order->code = mt_rand(100,999);
@@ -52,6 +54,7 @@ class CartController extends Controller
         {
             $order_detail = new Order_Detail;
             $order_detail->product_id = $produk->id;
+            $order_detail->slug = $produk->slug;
             $order_detail->order_id = $new_order->id;
             $order_detail->total = $request->total;
             $order_detail->total_price = $produk->price * $request->total;
@@ -89,9 +92,9 @@ class CartController extends Controller
         return view('cart.index',compact('order','order_detail'));
     }
 
-    public function hapusKeranjang($id)
+    public function hapusKeranjang($slug)
     {
-        $order_detail = Order_Detail::where('id',$id)->first();
+        $order_detail = Order_Detail::where('slug',$slug)->first();
         $order = Order::where('id',$order_detail->order_id)->first();
 
         $order->total_price =  $order->total_price - $order_detail->total_price;

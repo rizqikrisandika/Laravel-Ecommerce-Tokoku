@@ -26,9 +26,9 @@ class HomeController extends Controller
         return view('produk.index',compact('produk','kategori'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $produk = Product::findOrFail($id);
+        $produk = Product::where('slug',$slug)->first();
 
         return view('produk.detail', compact('produk'));
     }

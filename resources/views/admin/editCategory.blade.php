@@ -9,7 +9,7 @@
         Ubah Kategori Produk
     </div>
     <div class="card-body">
-        <form action="{{ route('updatekategori.admin', ['id'=>$kategori->id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('updatekategori.admin', ['slug'=>$kategori->slug]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Tambah Kategori</label>

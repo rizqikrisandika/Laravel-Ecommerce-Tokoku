@@ -29,8 +29,8 @@
                     <td>{{ $produk->category['name'] }}</td>
                     <td>Rp. {{ $produk->price }}</td>
                     <td>
-                        <a name="" id="" class="btn btn-warning" href="{{ route('tampilubahproduk.admin',['id'=>$produk->id]) }}" role="button">Ubah</a>
-                        <form class="d-inline" action="{{ route('hapusproduk.admin',['id'=>$produk->id]) }}" method="post">
+                        <a name="" id="" class="btn btn-warning" href="{{ route('tampilubahproduk.admin',['slug'=>$produk->slug]) }}" role="button">Ubah</a>
+                        <form class="d-inline" action="{{ route('hapusproduk.admin',['slug'=>$produk->slug]) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" id="" class="btn btn-danger"  role="button">Hapus</button>
