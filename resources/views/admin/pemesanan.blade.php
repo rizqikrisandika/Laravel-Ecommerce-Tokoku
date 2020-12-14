@@ -43,7 +43,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $order->links() }}
+        {{ $order->onEachSide(2)->links() }}
     </div>
 </div>
 

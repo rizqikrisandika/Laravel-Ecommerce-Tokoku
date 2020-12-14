@@ -47,7 +47,7 @@
     <div class="row">
         @foreach ($kategori as $kategori)
         <div class="col-12 col-sm-12 col-md-3 col-lg-3 mt-5">
-            <a href="">
+            <a href="{{ route('produkkategori.index',['slug'=>$kategori->slug]) }}">
                 <div class="card">
                     <div class="card-body">
                         <img src="{{ url('/storage/'.$kategori->image) }}" class="card-img-top" alt="...">

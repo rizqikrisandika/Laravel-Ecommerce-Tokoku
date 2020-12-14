@@ -53,7 +53,7 @@
                         <td>
                             <form action="{{ route('tambahkeranjang.index',['slug'=>$produk->slug]) }}" method="post">
                                 @csrf
-                                <input type="text" class="form-control" name="total" value="1">
+                                <input type="text" class="form-control text-center" name="total" value="1">
                         </td>
                     </tr>
                 </tbody>

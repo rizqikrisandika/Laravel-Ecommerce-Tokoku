@@ -9,8 +9,39 @@
         Produk
     </div>
     <div class="card-body">
-        <a name="" id="" class="btn btn-primary mb-3" href="{{ route('tampiltambah.admin') }}" role="button">Tambah
-            Produk</a>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                <a name="" id="" class="btn btn-primary mb-3" href="{{ route('tampiltambah.admin') }}" role="button">+ Tambah
+                    Produk</a>
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <form action="{{ route('cariproduk.admin') }}" method="get">
+                    <div class="input-group">
+                        <input type="text" name="cari" class="form-control" placeholder="Cari Produk..." id="">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+           <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+            <table class="table table-sm table-borderless">
+                <tbody>
+                    <tr>
+                        <th scope="row">Halaman</th>
+                        <td>:</td>
+                        <td>{{ $produk->currentPage() }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Jumlah Produk</th>
+                        <td>:</td>
+                        <td>{{ $produk->total() }}</td>
+                    </tr>
+                </tbody>
+            </table>
+           </div>
+        </div>
 
         <table class="table">
             <thead class="thead-light text-center">
@@ -56,8 +87,7 @@
                 @endforeach
             </tbody>
         </table>
-
-        {{ $produk->links() }}
+        {{ $produk->onEachSide(2)->links() }}
     </div>
 </div>
 

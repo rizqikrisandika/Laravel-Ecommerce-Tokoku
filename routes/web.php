@@ -20,6 +20,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard.admin');
 
     Route::get('/dashboard/produk','ProductController@index')->name('produk.admin');
+    Route::get('/dashboard/produk/cari','ProductController@cari')->name('cariproduk.admin');
     Route::get('/dashboard/produk/tambah','ProductController@tambahForm')->name('tampiltambah.admin');
     Route::post('/dashboard/produk/tambah','ProductController@tambahProduk')->name('tambahproduk.admin');
     Route::get('/dashboard/produk/ubah/{slug}','ProductController@editForm')->name('tampilubahproduk.admin');
@@ -33,6 +34,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('/dashboard/kategori/ubah/{slug}','CategoryController@updateCategory')->name('updatekategori.admin');
     Route::delete('/dashboard/kategori/hapus/{slug}','CategoryController@hapusCategory')->name('hapuskategori.admin');
 
+    Route::get('/dashboard/pengguna/cari','UserController@cari')->name('cariuser.admin');
     Route::get('/dashboard/pengguna','UserController@index')->name('user.admin');
 
     Route::get('/dashboard/pemesanan','OrderController@index')->name('pemesanan.admin');
@@ -56,6 +58,9 @@ Route::group(['middleware' => ['role:user']], function () {
 Route::get('/','HomeController@index')->name('home.index');
 
 Route::get('/produk','HomeController@produk')->name('produk.index');
+Route::get('/produk/cari','HomeController@cari')->name('cariproduk.index');
+Route::get('/produk/kategori/{slug}','HomeController@kategori')->name('produkkategori.index');
 Route::get('/produk/{slug}','HomeController@show')->name('detailproduk.index');
+
 
 Route::get('/keranjang','CartController@keranjang')->name('keranjang.index');

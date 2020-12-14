@@ -22,7 +22,24 @@ class ProductController extends Controller
     public function index()
     {
 
-        $produk = Product::orderBy('created_at','desc')->paginate(5);
+        $produk = Product::orderBy('created_at','desc')->paginate(10);
+
+        return view('admin.produk',compact('produk'));
+    }
+
+
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+
+        $produk = Product::where('name','like',"%".$cari."%")->paginate(10);
+
+        // if($cari !== $produk)
+        // {
+        //     alert()->error('Tidak Ditemukan!', 'Produk');
+
+        //     return redirect()->route('produk.admin');
+        // }
 
         return view('admin.produk',compact('produk'));
     }

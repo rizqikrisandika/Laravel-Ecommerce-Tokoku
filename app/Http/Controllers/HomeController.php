@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function produk()
     {
         $produk =  Product::orderBy('created_at','desc')->paginate(12);
-        $kategori = Category::all();
+        $kategori = Category::withCount('product')->get();
 
         return view('produk.index',compact('produk','kategori'));
     }
@@ -31,5 +31,32 @@ class HomeController extends Controller
         $produk = Product::where('slug',$slug)->first();
 
         return view('produk.detail', compact('produk'));
+    }
+
+    public function kategori($slug)
+    {
+        $all = Category::all()->count();
+        $kategori = Category::withCount('product')->get();
+
+        $produk = Category::where('slug',$slug)->first()->product()->orderBy('created_at','desc')->paginate(12);
+
+        return view('produk.index',compact('produk','kategori','all'));
+    }
+
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+
+        $produk = Product::where('name','like',"%".$cari."%")->paginate(12);
+        $kategori = Category::withCount('product')->get();
+
+        // if($cari !== $produk)
+        // {
+        //     alert()->error('Tidak Ditemukan!', 'Produk');
+
+        //     return redirect()->route('produk.admin');
+        // }
+
+        return view('produk.index',compact('produk','kategori'));
     }
 }

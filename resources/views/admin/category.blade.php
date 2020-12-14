@@ -49,7 +49,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $kategori->links() }}
+        {{ $kategori->onEachSide(2)->links() }}
     </div>
 </div>
 

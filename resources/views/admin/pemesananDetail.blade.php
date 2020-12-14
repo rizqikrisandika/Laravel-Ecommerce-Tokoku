@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table table-hover">
+                    <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">No</th>
@@ -59,6 +59,10 @@
                             <tr>
                                 <td colspan="5" class="text-right"><Strong>Total yang harus ditransfer</Strong></td>
                                 <td><strong>Rp. {{ number_format($order->total_price + $order->code,0,",",".") }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right"></td>
+                                <td><a href="{{ route('pemesanan.admin') }}" class="btn btn-primary">Kembali</a></td>
                             </tr>
                         </tbody>
                       </table>

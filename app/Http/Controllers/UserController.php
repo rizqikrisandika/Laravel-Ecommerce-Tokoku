@@ -23,6 +23,22 @@ class UserController extends Controller
         return view('admin.pengguna',compact('pengguna'));
     }
 
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+
+        $pengguna = User::where('name','like',"%".$cari."%")->paginate(10);
+
+        // if($cari !== $pengguna)
+        // {
+        //     alert()->error('Tidak Ditemukan!', 'Pengguna');
+
+        //     return redirect()->route('user.admin');
+        // }
+
+        return view('admin.pengguna',compact('pengguna'));
+    }
+
     public function profile()
     {
         $user = User::where('id',Auth::user()->id)->first();
