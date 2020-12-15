@@ -49,7 +49,7 @@ class LoginController extends Controller
             return redirect()->route('dashboard.admin');
         }
 
-        alert()->message('Login', 'Sukses');
+        alert()->success('Login', 'Sukses');
 
         return redirect()->route('home.index');
     }

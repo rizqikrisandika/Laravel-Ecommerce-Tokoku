@@ -7,6 +7,7 @@ use UxWeb\SweetAlert\SweetAlert;
 use App\Order;
 use App\Order_Detail;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class HistoryController extends Controller
 {
@@ -30,5 +31,16 @@ class HistoryController extends Controller
         $order_detail = Order_Detail::where('order_id', $order->id)->get();
 
         return view('checkout.detailHistory',compact('order','order_detail'));
+    }
+
+    public function cetak_pdf($slug)
+    {
+        $order = Order::where('slug',$slug)->first();
+
+        $order_detail = Order_Detail::where('order_id', $order->id)->get();
+
+        $pdf = PDF::setOptions(['isRemoteEnabled' => true])->loadview('checkout.cetak',compact('order_detail','order'));
+
+        return $pdf->download('bukti-pemesanan.pdf');
     }
 }

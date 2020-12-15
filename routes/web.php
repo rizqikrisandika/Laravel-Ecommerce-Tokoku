@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get('/riwayat','HistoryController@index')->name('history.index');
     Route::get('/riwayat/{slug}','HistoryController@detail')->name('historydetail.index');
 
+    Route::get('/riwayat/cetak_pdf/{slug}','HistoryController@cetak_pdf')->name('cetakhistorydetail.index');
+
     Route::get('/checkout','OrderController@checkout')->name('checkout.index');
 
     Route::get('/profil','UserController@profile')->name('profile.index');

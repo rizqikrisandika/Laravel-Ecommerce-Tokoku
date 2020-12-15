@@ -11,6 +11,9 @@
           <li class="breadcrumb-item active" aria-current="page">Detail</li>
         </ol>
       </nav>
+      <div>
+          <a href="{{ route('cetakhistorydetail.index',['slug'=>$order->slug]) }}" class="btn btn-primary">Cetak</a>
+      </div>
             <div class="card mt-5">
                 <div class="card-body">
                     <h4>Pemesanan Sukses</h4>
