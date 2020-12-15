@@ -15,10 +15,13 @@
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
+                        @php
+                            $all = App\Product::all()->count();
+                        @endphp
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <a href="{{ route('produk.index') }}">Semua</a>
-                                <span class="badge badge-dark float-right">?</span>
+                                <span class="badge badge-dark float-right">{{ $all }}</span>
                             </li>
                             @foreach ($kategori as $kat)
                             <li class="list-group-item">
@@ -33,7 +36,7 @@
                 <h3 class="font-weight-bold">Produk</h3>
                 <div class="row mt-5">
                     @foreach ($produk as $no => $data)
-                    <div class="col-12 col-lg-4 col-md-4 col-sm-6">
+                    <div class="col-12 col-lg-4 col-md-4 col-sm-6 mb-4">
                         <div class="card">
                             <a href="{{ route('detailproduk.index',['slug'=>$data->slug]) }}">
                                 <img src="{{ url('/storage/'.$data->image) }}" class="card-img-top" alt="...">

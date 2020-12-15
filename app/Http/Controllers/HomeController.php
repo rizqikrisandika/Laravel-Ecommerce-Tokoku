@@ -23,6 +23,7 @@ class HomeController extends Controller
         $produk =  Product::orderBy('created_at','desc')->paginate(12);
         $kategori = Category::withCount('product')->get();
 
+
         return view('produk.index',compact('produk','kategori'));
     }
 
@@ -35,12 +36,11 @@ class HomeController extends Controller
 
     public function kategori($slug)
     {
-        $all = Category::all()->count();
         $kategori = Category::withCount('product')->get();
 
         $produk = Category::where('slug',$slug)->first()->product()->orderBy('created_at','desc')->paginate(12);
 
-        return view('produk.index',compact('produk','kategori','all'));
+        return view('produk.index',compact('produk','kategori'));
     }
 
     public function cari(Request $request)

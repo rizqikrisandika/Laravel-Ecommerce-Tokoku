@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use UxWeb\SweetAlert\SweetAlert;
 
 
 class CartController extends Controller
@@ -22,9 +23,10 @@ class CartController extends Controller
 
         if($request->total > $produk->quantity)
         {
-            alert()->error('Pemesanan Melebihi Stok Produk', 'Gagal');
+            alert()->error('Pemesanan Melebihi Stok Produk', 'Gagal')->persistent('Ok');
 
             return redirect()->route('detailproduk.index',$slug);
+            // return redirect()->route('detailproduk.index',$slug)->with('error','Pemesanan Melebihi Stok!');
         }
 
         $cek_order = Order::where('user_id',Auth::user()->id)->where('status','=','keranjang')->first();

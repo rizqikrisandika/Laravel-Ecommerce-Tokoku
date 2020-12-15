@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::group(['middleware' => ['role:admin']], function () {
+Route::group(['middleware' => ['auth','role:admin']], function () {
     Route::get('/dashboard','DashboardController@index')->name('dashboard.admin');
 
     Route::get('/dashboard/produk','ProductController@index')->name('produk.admin');
@@ -41,7 +41,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard/pemesanan/{slug}','OrderController@detail')->name('pemesananDetail.admin');
 });
 
-Route::group(['middleware' => ['role:user']], function () {
+Route::group(['middleware' => ['auth','role:user']], function () {
     Route::post('/keranjang/{slug}','CartController@order')->name('tambahkeranjang.index');
     Route::delete('/keranjang/{slug}','CartController@hapusKeranjang')->name('hapuskeranjang.index');
 
