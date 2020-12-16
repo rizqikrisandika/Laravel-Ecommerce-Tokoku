@@ -11,32 +11,42 @@
     <div class="card-body">
         <form action="{{ route('tambahproduk.admin') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-              <label for="exampleInputEmail1">Nama</label>
-              <input type="text" name="name" class="form-control" id="" aria-describedby="" placeholder="Nama produk">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama</label>
+                        <input type="text" name="name" class="form-control" id="" aria-describedby="" placeholder="Nama produk">
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Kategori</label>
+                        <select class="form-control" name="category_id" id="">
+                          <option selected>Pilih Produk</option>
+                            @foreach ($kategori as $kategori)
+                            <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
+                            @endforeach
+                        </select>
+                      </div>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Kategori</label>
-              <select class="form-control" name="category_id" id="">
-                <option selected>Pilih Produk</option>
-                  @foreach ($kategori as $kategori)
-                  <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
-                  @endforeach
-              </select>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Harga</label>
+                        <input type="number" name="price" class="form-control" id="" aria-describedby="" placeholder="Rp.">
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Stok</label>
+                        <input type="string" name="quantity" class="form-control" id="" aria-describedby="" placeholder="Jumlah Produk">
+                      </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Harga</label>
-                <input type="number" name="price" class="form-control" id="" aria-describedby="" placeholder="Rp.">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Jumlah</label>
-                <input type="number" name="quantity" class="form-control" id="" aria-describedby="" placeholder="Jumlah Produk">
-              </div>
-
               <div class="form-group">
                 <label for="exampleInputEmail1">Deskripsi</label>
-                <textarea type="" name="desc" class="form-control" id="summernote" aria-describedby=""></textarea>
+                <textarea type="" name="desc" class="form-control" rows="5" aria-describedby=""></textarea>
               </div>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="image" id="customFile">

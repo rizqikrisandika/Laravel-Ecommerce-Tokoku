@@ -11,14 +11,23 @@
     <div class="card-body">
         <form action="{{ route('tambahkategori.admin') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label for="exampleInputEmail1">Tambah Kategori</label>
-                <input type="text" name="name" class="form-control" id="" aria-describedby="">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tambah Kategori</label>
+                        <input type="text" name="name" class="form-control" id="" aria-describedby=""  placeholder="Kategori">
+                    </div>
+
+                </div>
+                <div class="col">
+                    <label for="exampleInputEmail1">Gambar Kategori</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="image" id="customFile">
+                        <label class="custom-file-label" for="customFile">Pilih Gambar</label>
+                      </div>
+
+                </div>
             </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" name="image" id="customFile">
-                <label class="custom-file-label" for="customFile">Pilih Gambar</label>
-              </div>
             <button type="submit" class="btn btn-primary w-100 mt-3">Simpan</button>
         </form>
 

@@ -39,7 +39,7 @@ class HistoryController extends Controller
 
         $order_detail = Order_Detail::where('order_id', $order->id)->get();
 
-        $pdf = PDF::setOptions(['isRemoteEnabled' => true])->loadview('checkout.cetak',compact('order_detail','order'));
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('checkout.cetak',compact('order_detail','order'));
 
         return $pdf->download('bukti-pemesanan.pdf');
     }

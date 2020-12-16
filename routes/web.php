@@ -36,6 +36,9 @@ Route::group(['middleware' => ['auth','role:admin']], function () {
 
     Route::get('/dashboard/pengguna/cari','UserController@cari')->name('cariuser.admin');
     Route::get('/dashboard/pengguna','UserController@index')->name('user.admin');
+    Route::get('/dashboard/pengguna/detail/{slug}','UserController@detailUser')->name('detailuser.admin');
+    Route::get('/dashboard/pengguna/tambah','UserController@tampilForm')->name('tampiltambahpengguna.admin');
+    Route::post('/dashboard/pengguna/tambah','UserController@tambahPengguna')->name('tambahpengguna.admin');
 
     Route::get('/dashboard/pemesanan','OrderController@index')->name('pemesanan.admin');
     Route::get('/dashboard/pemesanan/{slug}','OrderController@detail')->name('pemesananDetail.admin');
