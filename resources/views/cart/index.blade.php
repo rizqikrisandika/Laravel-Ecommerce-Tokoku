@@ -55,7 +55,7 @@
                     </tr>
                     @endforeach
                     <tr>
-                        <td colspan="5" class="text-right"><Strong>Total Harga</Strong></td>
+                        <td colspan="5" class="text-right"><Strong>Total</Strong></td>
                         <td><strong>Rp. {{ number_format($order->total_price,0,",",".") }}</strong></td>
                         <td></td>
                     </tr>
@@ -73,7 +73,7 @@
                         <td colspan="4"></td>
                         <td><a name="" id="" class="btn btn-primary w-100" href="{{ route('produk.index') }}" role="button">Kembali Belanja</a></td>
                         <td>
-                            <a name="" id="" class="btn btn-success w-100" href="{{ route('checkout.index') }}" role="button"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                            <a name="" id="" class="btn btn-success w-100" href="{{ route('tampilcheckout.index') }}" role="button"><i class="fa fa-shopping-cart"></i> Checkout</a>
                         </td>
                         <td></td>
                     </tr>

@@ -20,4 +20,5 @@ class Order extends Model
     {
         return $this->belongsTo(Order_Detail::class);
     }
+
 }

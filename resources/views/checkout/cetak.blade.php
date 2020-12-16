@@ -18,7 +18,8 @@
             border: 2px;
 		}
 	</style>
-
+                <h2>Tokoku.</h2>
+                <hr>
                 <h4>Pemesanan Sukses</h4>
                 <h6>Pemesanan anda sukses selanjutnya untuk melakukan pembayaran melalui transfer
                     <br>
@@ -26,7 +27,38 @@
                     dengan nominal <strong>Rp. {{ number_format($order->total_price + $order->code,0,",",".") }}</strong>
                 </h6>
                 <hr>
-                <br><br>
+                <br>
+                <table>
+                    <tbody>
+                        {{-- @foreach ($user as $user) --}}
+                        <tr>
+                            <th scope="row">Nama</th>
+                            <td>:   {{ Auth::user()->name }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td>:   {{ Auth::user()->email }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">No hp</th>
+                            <td>:   {{ Auth::user()->phone }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Alamat Pengiriman</th>
+                            <td>:   {{ Auth::user()->address }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Kota Tujuan</th>
+                            <td>:   {{ Auth::user()->city }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Kode Pos</th>
+                            <td>: {{ Auth::user()->zipcode }}</td>
+                        </tr>
+                        {{-- @endforeach --}}
+                    </tbody>
+                  </table>
+                  <br>
                 <table class="table table-bordered">
                     <thead>
                       <tr>
@@ -48,15 +80,15 @@
                         </tr>
                         @endforeach
                         <tr>
-                            <td colspan="5" class="text-right"><Strong>Total Harga</Strong></td>
+                            <td colspan="4" class="text-right"><Strong>Total</Strong></td>
                             <td><strong>Rp. {{ number_format($order->total_price,0,",",".") }}</strong></td>
                         </tr>
                         <tr>
-                            <td colspan="5" class="text-right"><Strong>Kode Unik</Strong></td>
+                            <td colspan="4" class="text-right"><Strong>Kode Unik</Strong></td>
                             <td><strong>Rp. {{ number_format($order->code,0,",",".") }}</strong></td>
                         </tr>
                         <tr>
-                            <td colspan="5" class="text-right"><Strong>Total yang harus ditransfer</Strong></td>
+                            <td colspan="4" class="text-right"><Strong>Total yang harus ditransfer</Strong></td>
                             <td><strong>Rp. {{ number_format($order->total_price + $order->code,0,",",".") }}</strong></td>
                         </tr>
                     </tbody>

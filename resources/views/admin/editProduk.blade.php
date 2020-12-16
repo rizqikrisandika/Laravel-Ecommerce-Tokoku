@@ -39,12 +39,12 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Harga</label>
-                    <input type="number" name="price" class="form-control" id="" aria-describedby=""
-                        value="{{ $produk->price }}" placeholder="Rp.">
+                    <input type="text" name="price" class="form-control" id="rupiah2" aria-describedby=""
+                        value="Rp. {{ number_format($produk->price,0,'.','.') }}" placeholder="Rp.">
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Jumlah</label>
+                    <label for="exampleInputEmail1">Stok</label>
                     <input type="number" name="quantity" class="form-control" id="" aria-describedby=""
                         value="{{ $produk->quantity }}" placeholder="Jumlah Produk">
                 </div>

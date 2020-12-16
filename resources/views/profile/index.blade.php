@@ -25,19 +25,19 @@
             </div>
             <div class="form-group">
                 <label>No Hp</label>
-                <input type="text" name="phone" value="{{ $user->phone }}" class="form-control">
+                <input type="text" name="phone" value="{{ $user->phone }}" class="form-control" placeholder="No Hp" maxlength="12">
             </div>
             <div class="form-group">
-                <label for="">Alamat Lengkap</label>
-                <textarea class="form-control" name="address" name="" id="" rows="3">{{ $user->address }}</textarea>
+                <label for="">Alamat Lengkap/Tujuan Pengiriman</label>
+                <textarea class="form-control" name="address" name="" id="" rows="3" placeholder="Alamat Lengkap">{{ $user->address }}</textarea>
             </div>
             <div class="form-group">
                 <label>Kota/Kabupaten</label>
-                <input type="text" name="city" value="{{ $user->city }}" class="form-control">
+                <input type="text" name="city" value="{{ $user->city }}" class="form-control" placeholder="Kota/Kabupaten">
             </div>
             <div class="form-group">
                 <label>Kode Pos</label>
-                <input type="text" name="zipcode" value="{{ $user->zipcode }}" class="form-control">
+                <input type="text" name="zipcode" value="{{ $user->zipcode }}" class="form-control" placeholder="Kode Pos">
             </div>
             <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Simpan</button>
         </form>

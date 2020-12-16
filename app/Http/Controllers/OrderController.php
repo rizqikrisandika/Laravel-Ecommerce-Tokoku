@@ -35,17 +35,46 @@ class OrderController extends Controller
         return view('admin.pemesananDetail',compact('order','order_detail'));
     }
 
-    public function checkout()
+    public function tampilCheckout()
     {
+        $user = User::where('id',Auth::user()->id)->first();
+        $order = Order::where('user_id', Auth::user()->id)->where('status','=','keranjang')->first();
+        $order_detail = Order_Detail::where('order_id',$order->id)->get();
+
+        return view('checkout.index',compact('order_detail','user','order'));
+    }
+
+    public function checkout(Request $request)
+    {
+
+        // $user = User::where('id',Auth::user()->id)->first();
+
+        // if(empty($user->address or $user->city or $user->zipcode))
+        // {
+        //     alert()->error('Identitas Mohon Dilengkapi ', 'Error');
+
+        //     return redirect()->route('checkout.index');
+        // }
+
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|digits:12',
+            'city' => 'required|string',
+            'address' => 'required|string|max:100',
+            'zipcode' => 'required|string',
+        ]);
 
         $user = User::where('id',Auth::user()->id)->first();
 
-        if(empty($user->address or $user->city or $user->zipcode))
-        {
-            alert()->error('Identitas Mohon Dilengkapi ', 'Error');
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->city = $request->city;
+        $user->address = $request->address;
+        $user->zipcode = $request->zipcode;
 
-            return redirect()->route('profile.index');
-        }
+        $user->update();
 
         $tanggal = Carbon::now();
 

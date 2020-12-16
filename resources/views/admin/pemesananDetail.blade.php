@@ -49,7 +49,7 @@
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="5" class="text-right"><Strong>Total Harga</Strong></td>
+                                <td colspan="5" class="text-right"><Strong>Total</Strong></td>
                                 <td><strong>Rp. {{ number_format($order->total_price,0,",",".") }}</strong></td>
                             </tr>
                             <tr>

@@ -12,11 +12,15 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/style/stylesheet.css') }}" rel="stylesheet">
@@ -25,7 +29,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{route('home.index')}}">
                     <i class="fa fa-store fa-2x"></i>
                     <h3 class="d-inline pl-2">Tokoku.</h3>
                 </a>
@@ -168,4 +172,45 @@
     @include('sweet::alert')
 
 </body>
+
+<script>
+    var rupiah2 = document.getElementById("rupiah2");
+    rupiah2.addEventListener("keyup", function(e) {
+    rupiah2.value = convertRupiah(this.value, "Rp. ");
+    });
+    rupiah2.addEventListener('keydown', function(event) {
+        return isNumberKey(event);
+    });
+
+
+     function convertRupiah(angka, prefix) {
+     var number_string = angka.replace(/[^,\d]/g, "").toString(),
+         split  = number_string.split(","),
+         sisa   = split[0].length % 3,
+         rupiah = split[0].substr(0, sisa),
+         ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+         if (ribuan) {
+             separator = sisa ? "." : "";
+             rupiah += separator + ribuan.join(".");
+         }
+
+         rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+         return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
+     }
+
+     function isNumberKey(evt) {
+         key = evt.which || evt.keyCode;
+         if ( 	key != 188 // Comma
+             && key != 8 // Backspace
+             && key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
+             && (key < 48 || key > 57) // Non digit
+             )
+         {
+             evt.preventDefault();
+             return;
+         }
+     }
+ </script>
+
 </html>

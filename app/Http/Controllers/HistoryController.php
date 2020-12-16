@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use UxWeb\SweetAlert\SweetAlert;
 use App\Order;
 use App\Order_Detail;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
 

@@ -53,7 +53,8 @@ Route::group(['middleware' => ['auth','role:user']], function () {
 
     Route::get('/riwayat/cetak_pdf/{slug}','HistoryController@cetak_pdf')->name('cetakhistorydetail.index');
 
-    Route::get('/checkout','OrderController@checkout')->name('checkout.index');
+    Route::get('/checkout','OrderController@tampilCheckout')->name('tampilcheckout.index');
+    Route::post('/checkout/selesai','OrderController@checkout')->name('checkout.index');
 
     Route::get('/profil','UserController@profile')->name('profile.index');
     Route::post('/profil','UserController@updateProfile')->name('updateprofile.index');

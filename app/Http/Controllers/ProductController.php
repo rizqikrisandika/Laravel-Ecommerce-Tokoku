@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $produk = Product::orderBy('created_at','desc')->paginate(10);
+        $produk = Product::orderBy('updated_at','desc')->paginate(10);
 
         return view('admin.produk',compact('produk'));
     }
@@ -64,7 +64,7 @@ class ProductController extends Controller
 
         $request->validate([
             'name'=>'required|string',
-            'price'=>'required|numeric',
+            'price'=>'required|string',
             'category_id'=>'required',
             'image'=>'required|image|mimes:jpeg,png,jpg|max:2048',
             'quantity'=>'required',
@@ -80,10 +80,11 @@ class ProductController extends Controller
 
         $user_id = Auth::user()->id;
 
+        $format_price = preg_replace('/\D/','',$request->price);
         $produk = new Product();
         $produk->name = $request->name;
         $produk->slug = Str::slug($request->name);
-        $produk->price = $request->price;
+        $produk->price = $format_price;
         $produk->category_id = $request->category_id;
         $produk->image = $imagePath;
         $produk->quantity = $request->quantity;
@@ -113,7 +114,7 @@ class ProductController extends Controller
 
         $request->validate([
             'name'=>'required|string',
-            'price'=>'required',
+            'price'=>'required|string',
             'category_id'=>'required',
             'image'=>'',
             'quantity'=>'required',
@@ -132,9 +133,10 @@ class ProductController extends Controller
 
             Storage::disk('public')->delete($produk->image);
 
+            $format_price = preg_replace('/\D/','',$request->price);
             $produk->name = $request->name;
             $produk->slug = Str::slug($request->name);
-            $produk->price = $request->price;
+            $produk->price = $format_price;
             $produk->category_id = $request->category_id;
             $produk->image = $imagePath;
             $produk->quantity = $request->quantity;
@@ -145,9 +147,10 @@ class ProductController extends Controller
 
         }else{
 
+            $format_price = preg_replace('/\D/','',$request->price);
             $produk->name = $request->name;
             $produk->slug = Str::slug($request->name);
-            $produk->price = $request->price;
+            $produk->price = $format_price;
             $produk->category_id = $request->category_id;
             $produk->quantity = $request->quantity;
             $produk->desc = $request->desc;

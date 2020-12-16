@@ -15,7 +15,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama</label>
-                        <input type="text" name="name" class="form-control" id="" aria-describedby="" placeholder="Nama produk">
+                        <input type="text" name="name" class="form-control" id="" value="{{ old('name') }}" aria-describedby="" placeholder="Nama produk">
                       </div>
                 </div>
                 <div class="col">
@@ -34,20 +34,21 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Harga</label>
-                        <input type="number" name="price" class="form-control" id="" aria-describedby="" placeholder="Rp.">
+                        <input type="text" name="price" class="form-control" value="{{ old('price') }}" id="rupiah2" aria-describedby="" placeholder="Rp.">
                       </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Stok</label>
-                        <input type="string" name="quantity" class="form-control" id="" aria-describedby="" placeholder="Jumlah Produk">
+                        <input type="string" name="quantity" class="form-control" value="{{ old('quantity') }}" id="" aria-describedby="" placeholder="Jumlah Produk">
                       </div>
                 </div>
             </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Deskripsi</label>
-                <textarea type="" name="desc" class="form-control" rows="5" aria-describedby=""></textarea>
+                <textarea type="" name="desc" class="form-control" rows="5" aria-describedby="" placeholder="Deskripsi Produk">{{ old('desc') }}</textarea>
               </div>
+              <label for="exampleInputEmail1">Gambar Produk</label>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" name="image" id="customFile">
                 <label class="custom-file-label" for="customFile">Pilih Foto</label>
