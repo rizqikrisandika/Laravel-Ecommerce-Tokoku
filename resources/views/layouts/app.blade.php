@@ -128,7 +128,7 @@
             @yield('content')
         </main>
 
-        <footer class="bg-white p-3 mt-5">
+        <footer class="bg-white p-3 mt-4">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-3 col-lg-3 mt-5">
