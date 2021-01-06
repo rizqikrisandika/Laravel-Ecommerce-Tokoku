@@ -86,11 +86,11 @@
                 <div>
                     <i class="fa fa-shopping-cart fa-10x" aria-hidden="true"></i>
                 </div>
-                <div>
+                <div class="mt-5">
                     <h3>Keranjang Anda Kosong</h3>
                 </div>
-                <div>
-                    <a href="{{ route('produk.index') }}">Silahkan Belanja</a>
+                <div class="mt-3">
+                    <a class="btn btn-primary" href="{{ route('produk.index') }}">Silahkan Belanja</a>
                 </div>
             </div>
         </div>
