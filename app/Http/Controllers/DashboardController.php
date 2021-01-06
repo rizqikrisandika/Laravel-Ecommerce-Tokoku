@@ -7,6 +7,7 @@ use App\User;
 use App\Product;
 use App\Order;
 use App\Role;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -27,7 +28,7 @@ class DashboardController extends Controller
         $produk = Product::get();
         $produkcount = count($produk);
 
-        $order_total = Order::where('status','checkout')->sum('total_price');
+        $order_total = Order::where('status','checkout')->value(DB::raw("SUM(total_price + code)"));
 
         $order = Order::where('status','=','checkout')->orderBy('order_date','desc')->take(4)->get();
 

@@ -2,61 +2,82 @@
 @section('title','Tokoku')
 @section('content')
 
-<div class="container mt-3">
 
-    <div class="jumbotron">
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4">
-                <div class="wrapper-top">
-                    <h2 class="font-weight-bold">SELAMAT DATANG</h2>
-                    <h2>DI TOKOKU.</h2>
-                    <h4>Promo Akhir Tahun</h4>
-                    <h4>Diskon 70%</h4>
-                    <a name="" id="" class="btn btn-primary btn-top mt-3 w-100" href="{{ route('produk.index') }}"
-                        role="button">Belanja Sekarang</a>
+            <div class="col-12 col-sm-12 col-md-14 col-lg-6">
+                <div class="wrapper-top mt-5">
+                    <h2 class="font-weight-bold">SELAMAT DATANG DI TOKOKU.</h2>
+                    <h5>Belanja Handphone Lebih Murah dan Mudah</h5>
+                    <a name="" id="" class="btn btn-primary btn-top mt-3"
+                        href="{{ route('produk.index') }}" role="button">Belanja Sekarang</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="owl-carousel owl-theme">
+    <div class="item"><h4>1</h4></div>
+    <div class="item"><h4>2</h4></div>
+    <div class="item"><h4>3</h4></div>
+    <div class="item"><h4>4</h4></div>
+    <div class="item"><h4>5</h4></div>
+    <div class="item"><h4>6</h4></div>
+    <div class="item"><h4>7</h4></div>
+    <div class="item"><h4>8</h4></div>
+    <div class="item"><h4>9</h4></div>
+    <div class="item"><h4>10</h4></div>
+    <div class="item"><h4>11</h4></div>
+    <div class="item"><h4>12</h4></div>
+</div>
+<div class="container">
+    <h2 class="mt-5 font-weight-bold">Kategori</h2>
+    <div class="row">
+        @foreach($kategori as $kategori)
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 mt-4">
+                <a
+                    href="{{ route('produkkategori.index',['slug'=>$kategori->slug]) }}">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="{{ url('/storage/'.$kategori->image) }}"
+                                class="card-img-top" alt="...">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        @endforeach
+    </div>
+
     <h2 class="mt-5 font-weight-bold">Produk Terbaru</h2>
     <div class="content-produk-terbaru">
         <div class="row">
-            @foreach ($produk as $produk)
-            <div class="col-6 col-lg-3 col-md-6 col-sm-6 mt-5">
-                <div class="card" style="">
-                    <div class="card-body card-img p-2">
-                        <a href="{{ route('detailproduk.index',['slug'=>$produk->slug]) }}">
-                            <img src="{{ url('/storage/'.$produk->image) }}" class="card-img-top img-responsive" alt="...">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="{{ route('detailproduk.index',['slug'=>$produk->slug]) }}">
-                            <h5 class="card-title">{{ $produk->name }}</h5>
-                        </a>
-                        <p class="card-text">Rp. {{number_format($produk->price,0,",",".")}}</p>
-                        <p class="card-text">{{$produk->category['name']}}</p>
-                        <p class="card-text">{{$produk->created_at->diffForHumans()}}</p>
-                    </div>
+            @foreach($produk as $produk)
+                <div class="col-6 col-lg-3 col-md-6 col-sm-6 mt-5 card-product">
+                    <a
+                        href="{{ route('detailproduk.index',['slug'=>$produk->slug]) }}">
+                        <div class="card" style="">
+                            <div class="card-body card-img p-2">
+                                <img src="{{ url('/storage/'.$produk->image) }}"
+                                    class="card-img-top img-responsive" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><strong>{{ $produk->name }}</strong></h5>
+
+                                <p class="card-text">Rp.
+                                    {{ number_format($produk->price,0,",",".") }}
+                                </p>
+                                <p class="card-text">{{ $produk->category['name'] }}</p>
+                                <p class="card-text">{{ $produk->created_at->diffForHumans() }}</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
 
-    <h2 class="mt-5 font-weight-bold">Kategori</h2>
-    <div class="row">
-        @foreach ($kategori as $kategori)
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3 mt-5">
-            <a href="{{ route('produkkategori.index',['slug'=>$kategori->slug]) }}">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="{{ url('/storage/'.$kategori->image) }}" class="card-img-top" alt="...">
-                    </div>
-                </div>
-            </a>
-        </div>
-        @endforeach
-    </div>
+
 
 
 

@@ -6,6 +6,48 @@ body{
     background-color: white;
 }
 
+nav{
+    min-height: 100px;
+}
+
+nav ul li{
+    padding-left: 15px;
+    font-weight: bold;
+}
+
+.card-product a{
+    color: black;
+}
+
+.card-product a:hover{
+    text-decoration-line: none;
+}
+
+.card-product a:hover .card img{
+    transform: scale(1.04);
+    transition: 0.4s ease;
+}
+
+.card-product a:hover .card h5{
+    color: blue;
+}
+
+.list-group-item a{
+    color: black;
+}
+
+.list-group-item a:hover{
+    opacity: 0.8;
+    text-decoration-line: none;
+    font-weight: bold;
+}
+
+.list-group-item .active{
+    opacity: 0.8;
+    text-decoration-line: none;
+    font-weight: bold;
+}
+
 .jumbotron{
     background-image: url('image/background-2.jpg');
     background-repeat: no-repeat;
@@ -13,10 +55,6 @@ body{
     background-size: cover;
     height: 400px;
     color: white;
-}
-
-.wrapper-top{
-    text-align: center;
 }
 
 .wrapper-top h2{
@@ -64,4 +102,19 @@ footer{
     object-fit: contain;
     padding-top: 10px;
 }
+
+.breadcrumb{
+    background: transparent;
+    padding-left: 0;
+}
+
+.breadcrumb a{
+    font-weight: bold;
+}
+
+.breadcrumb a:hover{
+    text-decoration-line: none;
+}
+
+
 

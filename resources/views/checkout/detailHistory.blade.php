@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container mt-5">
     <nav aria-label="breadcrumb white">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>

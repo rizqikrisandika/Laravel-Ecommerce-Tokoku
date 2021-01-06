@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container mt-5">
 
     <nav aria-label="breadcrumb white">
         <ol class="breadcrumb">
@@ -21,7 +21,7 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
 
 
-            <h3>{{ $produk->name }}</h3>
+            <h3><strong>{{ $produk->name }}</strong></h3>
             <h5>Rp. {{ number_format($produk->price,0,",","." )}}</h5>
 
             <table class="table mt-2">

@@ -20,7 +20,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" />
@@ -32,11 +32,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <i class="fa fa-store fa-2x"></i>
-                    <h3 class="d-inline pl-2">Tokoku.</h3>
+                    <h3 class="d-inline">Tokoku.</h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -54,32 +53,35 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Daftar') }}</a>
-                        </li>
-                        @endif
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="{{ route('login') }}">{{ __('Masuk') }}</a>
+                            </li>
+                            @if(Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="{{ route('register') }}">{{ __('Daftar') }}</a>
+                                </li>
+                            @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Keluar') }}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Keluar') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}"
+                                        method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
@@ -95,19 +97,19 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <a class="" href="{{ route('dashboard.admin') }}">Dashboard</a>
+                                <a class="{{ set_active('dashboard.admin') }}" href="{{ route('dashboard.admin') }}">Dashboard</a>
                             </li>
                             <li class="list-group-item">
-                                <a class="" href="{{ route('user.admin') }}">Pengguna</a>
+                                <a class="{{ set_active('user.admin') }}" href="{{ route('user.admin') }}">Pengguna</a>
                             </li>
                             <li class="list-group-item">
-                                <a class="" href="{{ route('produk.admin') }}">Produk</a>
+                                <a class="{{ set_active('produk.admin') }}" href="{{ route('produk.admin') }}">Produk</a>
                             </li>
                             <li class="list-group-item">
-                                <a class="" href="{{ route('tampilkategori.admin') }}">Kategori</a>
+                                <a class="{{ set_active('tampilkategori.admin') }}" href="{{ route('tampilkategori.admin') }}">Kategori</a>
                             </li>
                             <li class="list-group-item">
-                                <a class="" href="{{ route('pemesanan.admin') }}">Pemesanan</a>
+                                <a class="{{ set_active('pemesanan.admin') }}" href="{{ route('pemesanan.admin') }}">Pemesanan</a>
                             </li>
                         </ul>
                     </div>
@@ -163,20 +165,20 @@
 </script>
 
 <script>
-   var rupiah2 = document.getElementById("rupiah2");
-    rupiah2.addEventListener("keyup", function(e) {
-    rupiah2.value = convertRupiah(this.value, "Rp. ");
+    var rupiah2 = document.getElementById("rupiah2");
+    rupiah2.addEventListener("keyup", function (e) {
+        rupiah2.value = convertRupiah(this.value, "Rp. ");
     });
-    rupiah2.addEventListener('keydown', function(event) {
+    rupiah2.addEventListener('keydown', function (event) {
         return isNumberKey(event);
     });
 
     function convertRupiah(angka, prefix) {
-    var number_string = angka.replace(/[^,\d]/g, "").toString(),
-        split  = number_string.split(","),
-        sisa   = split[0].length % 3,
-        rupiah = split[0].substr(0, sisa),
-        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+        var number_string = angka.replace(/[^,\d]/g, "").toString(),
+            split = number_string.split(","),
+            sisa = split[0].length % 3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
         if (ribuan) {
             separator = sisa ? "." : "";
@@ -189,16 +191,19 @@
 
     function isNumberKey(evt) {
         key = evt.which || evt.keyCode;
-        if ( 	key != 188 // Comma
-            && key != 8 // Backspace
-            && key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
-            && (key < 48 || key > 57) // Non digit
-            )
-        {
+        if (key != 188 // Comma
+            &&
+            key != 8 // Backspace
+            &&
+            key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
+            &&
+            (key < 48 || key > 57) // Non digit
+        ) {
             evt.preventDefault();
             return;
         }
     }
+
 </script>
 
 

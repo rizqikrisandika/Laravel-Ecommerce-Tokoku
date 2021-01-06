@@ -3,14 +3,14 @@
 
 @section('content')
 
-<div class="container">
+<div class="container mt-5">
     <nav aria-label="breadcrumb white">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Profil</li>
         </ol>
     </nav>
-    <div class="col-8 mx-auto mt-5">
+    <div class="col-8 mx-auto">
         <h3 class="text-center mb-2">Profil</h3>
 
         <form action="{{ route('updateprofile.index')}}" method="POST">
