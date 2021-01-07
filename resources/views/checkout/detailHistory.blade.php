@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-4">
     <nav aria-label="breadcrumb white">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
@@ -11,10 +11,12 @@
           <li class="breadcrumb-item active" aria-current="page">Detail</li>
         </ol>
       </nav>
-      <div>
-          <a href="{{ route('cetakhistorydetail.index',['slug'=>$order->slug]) }}" class="btn btn-primary">Cetak</a>
+      <div class="d-block overflow-auto">
+         <div class="float-right">
+            <a href="{{ route('cetakhistorydetail.index',['slug'=>$order->slug]) }}" class="btn btn-primary"><i class="fa fa-print"></i> Cetak</a>
+         </div>
       </div>
-            <div class="card mt-5">
+            <div class="card mt-3">
                 <div class="card-body">
                     <h4>Pemesanan Sukses</h4>
                     <h6>Pemesanan anda sukses selanjutnya untuk melakukan pembayaran melalui transfer
@@ -46,7 +48,7 @@
                                 <td>{{ $order_detail->product['name'] }}</td>
                                 <td>{{ $order_detail->total }} unit</td>
                                 <td>Rp. {{ number_format($order_detail->product['price'],0,",",".") }}</td>
-                                <td>Rp. {{ number_format($order_detail->total_price,0,",",".") }}</td>
+                                <td><strong>Rp. {{ number_format($order_detail->total_price,0,",",".") }}</strong></td>
                             </tr>
                             @endforeach
                             <tr>

@@ -199,18 +199,22 @@
                     <div class="col-12 col-md-3 col-lg-3 mt-5">
                         <div class="footer-wrapper">
                             <h4>Ikuti Kami</h4>
+
                             <a class="nav-item nav-link pl-0 {{ request()->is('/register') ? 'active' : '' }}"
-                                href="#">Facebook</a>
+                                href="#"><i class="fab fa-facebook-square fa-lg"></i> Facebook</a>
                             <a class="nav-item nav-link pl-0 {{ request()->is('/register') ? 'active' : '' }}"
-                                href="#">Twitter</a>
+                                href="#"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
                             <a class="nav-item nav-link pl-0 {{ request()->is('/register') ? 'active' : '' }}"
-                                href="#">Instagram</a>
+                                href="#"><i class="fab fa-instagram fa-lg"></i> Instagram</a>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-3 col-lg-3 mt-5">
                         <div class="footer-wrapper">
-                            <h4>Info Terbaru</h4>
+                            <h4>Lokasi</h4>
+                            <div class="d-block">
+                                <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="150" id="gmap_canvas" src="https://maps.google.com/maps?q=Taman%20sedayu%203&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
+                            </div>
                         </div>
                     </div>
 

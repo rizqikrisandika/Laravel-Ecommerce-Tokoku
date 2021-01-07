@@ -26,10 +26,12 @@ nav ul li{
 .card-product a:hover .card img{
     transform: scale(1.04);
     transition: 0.4s ease;
+    opacity: 0.8;
 }
 
 .card-product a:hover .card h5{
     color: blue;
+    opacity: 0.8;
 }
 
 .list-group-item a{
@@ -84,7 +86,14 @@ nav ul li{
 }
 
 .footer-wrapper a{
+    color: #000000a6;
+    font-weight: bold;
+}
+
+.footer-wrapper a:hover{
     color: black;
+    opacity: 0.8;
+    font-weight: bold;
 }
 
 .footer-wrapper h4{

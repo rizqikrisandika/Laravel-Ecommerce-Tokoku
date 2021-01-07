@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-4">
     <nav aria-label="breadcrumb white">
         <ol class="breadcrumb pl-0">
             <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
@@ -11,7 +11,7 @@
         </ol>
     </nav>
 
-    <table class="table mt-5">
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col">No</th>
@@ -37,7 +37,7 @@
                 </td>
                 <td>Rp. {{ number_format($data->total_price,0,",",".") }}</td>
                 <td>
-                    <a class="btn btn-sm btn-primary" href="{{ route('historydetail.index',['slug'=>$data->slug]) }}">
+                    <a class="text-blue" href="{{ route('historydetail.index',['slug'=>$data->slug]) }}">
                         <i class="fa fa-search"></i>
                     </a>
                 </td>

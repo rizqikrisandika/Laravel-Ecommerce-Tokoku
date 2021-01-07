@@ -3,16 +3,16 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-4">
     <nav aria-label="breadcrumb white">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Beranda</a></li>
           <li class="breadcrumb-item active" aria-current="page">Keranjang</li>
         </ol>
       </nav>
 
             @if(!empty($order && $order->total_price !== 0) && Auth::user()->id)
-            <table class="table mt-5">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -66,7 +66,7 @@
                     </tr>
                     <tr>
                         <td colspan="5" class="text-right"><Strong>Total yang harus dibayar</Strong></td>
-                        <td><strong>Rp. {{ number_format($order->total_price + $order->code) }}</strong></td>
+                        <td><strong>Rp. {{ number_format($order->total_price + $order->code,0,",",".") }}</strong></td>
                         <td></td>
                     </tr>
                     <tr>
