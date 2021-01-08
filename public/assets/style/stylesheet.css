@@ -7,7 +7,9 @@ body{
 }
 
 nav{
-    min-height: 100px;
+    min-height: 70px;
+    background-color: transparent !important;
+    background: transparent !important;
 }
 
 nav ul li{

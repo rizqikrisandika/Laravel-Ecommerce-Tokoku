@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<div class="owl-carousel owl-theme">
+{{-- <div class="owl-carousel owl-theme">
     <div class="item"><h4>1</h4></div>
     <div class="item"><h4>2</h4></div>
     <div class="item"><h4>3</h4></div>
@@ -30,7 +30,7 @@
     <div class="item"><h4>10</h4></div>
     <div class="item"><h4>11</h4></div>
     <div class="item"><h4>12</h4></div>
-</div>
+</div> --}}
 <div class="container">
     <h2 class="mt-5 font-weight-bold">Kategori</h2>
     <div class="row">

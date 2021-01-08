@@ -35,7 +35,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home.index') }}">
                     <h3 class="d-inline">Tokoku.</h3>
@@ -166,7 +166,7 @@
             </div>
         </nav>
 
-        <main>
+        <main style="padding-top: 70px">
             @yield('content')
         </main>
 
@@ -213,7 +213,12 @@
                         <div class="footer-wrapper">
                             <h4>Lokasi</h4>
                             <div class="d-block">
-                                <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="150" id="gmap_canvas" src="https://maps.google.com/maps?q=Taman%20sedayu%203&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
+                                <div class="mapouter">
+                                    <div class="gmap_canvas"><iframe width="300" height="150" id="gmap_canvas"
+                                            src="https://maps.google.com/maps?q=Taman%20sedayu%203&t=&z=11&ie=UTF8&iwloc=&output=embed"
+                                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -231,7 +236,9 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
     integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
     crossorigin="anonymous"></script>
@@ -302,6 +309,25 @@
             }
         });
     });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+
+                $(window).scroll(function () {
+                    var scroll = $(window).scrollTop();
+
+                    //>=, not <=
+                    if (scroll >= 60) {
+                        //clearHeader, not clearheader - caps H
+                        $(".navbar").addClass("bg-white");
+                    } else {
+                        $(".navbar").removeClass("bg-white");
+                    }
+                });
+            });
 
 </script>
 
